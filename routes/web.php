@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CostController;
-
+use App\Http\Controllers\HourController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/costs', [CostController::class, 'index']);
+
+Route::get('/hours', [HourController::class,  'culculate_hour']);
