@@ -7,8 +7,8 @@ use App\Models\Cost;
 
 class CostController extends Controller
 {
-    public function index(Cost $cost)
+    public function culculate_cost(Cost $cost)
     {
-        return $cost->get();
+        return view('costs.culculate_cost');
     }
 }

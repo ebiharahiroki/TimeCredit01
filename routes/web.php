@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/costs', [CostController::class, 'index']);
-
 Route::get('/hours', [HourController::class,  'culculate_hour']);
+
+Route::get('/costs/culculate_cost', [CostController::class, 'culculate_cost']);
