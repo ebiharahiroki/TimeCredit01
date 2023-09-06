@@ -9,6 +9,6 @@ class HourController extends Controller
 {
     public function culculate_hour(Hour $hour)
     {
-        return $hour->get();
+        return view('hours.culculate_hour');
     }
 }

@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('/hours', [HourController::class,  'culculate_hour']);
 
 Route::get('/costs/culculate_cost', [CostController::class, 'culculate_cost']);
+
+Route::get('/hours/culculate_hour', [HourController::class, 'culculate_hour']);
