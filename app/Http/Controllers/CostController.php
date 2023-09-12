@@ -12,7 +12,7 @@ class CostController extends Controller
 {
     public function index(Cost $cost)
     {
-        return view('costs.index')->with(['costs' => $cost->get()]);
+        return view('costs.index')->with(['costs' => Auth::user()->costs()->get()]);
     }
     
     public function show_cost(Cost $cost)
@@ -27,13 +27,12 @@ class CostController extends Controller
     
     public function total_cost(Cost $cost)
     {
-        $costs = DB::table('costs')->get()->where('user_id', Auth::user()->id);
-        dd($cost);
-        $cost = DB::table('costs')->sum('rent');
+        $costs = DB::table('costs')->value('rent')->get()->where('user_id', Auth::user()->id);
+        dd($costs);
         
-        return view('costs.total_cost')-with([$total_cost => $cost->total()]);
         
-        return view('costs.total_cost', ['cost' => $cost]);
+        
+        return view('costs.total_cost');
     }
     
     public function store(CostRequest $request, Cost $cost)

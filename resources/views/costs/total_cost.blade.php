@@ -5,8 +5,7 @@
     <body>
         <h1>生活費</h1>
             <div class="total_cost">
-                @foreach ($costs as $cost)
-                <h2 class='rent'>{{ $cost->rent }}</h2>
+                <h2 class='total_cost'>{{ $cost->total_cost }}</h2>
             </div>
     </body>
 </x-app-layout>

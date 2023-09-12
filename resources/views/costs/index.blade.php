@@ -11,6 +11,14 @@
                     <h2 class="total_cost">
                         <a href="/costs/{{ $cost->id }}">{{ $cost->total_cost }}</a>
                     </h2>
+                    <div class="costs">
+                    <h2 class="rent">$posts</h2>
+                    <h2 class="water_cost">{{ $cost->water_cost }}</h2>
+                    <h2 class="utilitiy_cost">{{ $cost->utilitiy_cost }}</h2>
+                    <h2 class="food_cost">{{ $cost->food_cost }}</h2>
+                    <h2 class="phone_cost">{{ $cost->phone_cost }}</h2>
+                    <h2 class="other_cost">{{ $cost->other_cost }}</h2>
+                    </div>
                 </div>
             @endforeach
         </div>

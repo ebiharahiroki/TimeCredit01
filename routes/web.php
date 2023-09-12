@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::controller(CostController::class)->group(function(){
+Route::controller(CostController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
     Route::get('/costs/create_cost', 'create_cost')->name('create_cost');
     Route::post('/costs', 'store')->name('store');
@@ -44,5 +44,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-// ->middleware(['auth'])
