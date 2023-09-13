@@ -1,8 +1,7 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-    </head>
+<x-app-layout>
+    <x-slot name="header">
+        時間
+    </x-slot>
     <body>
         <h1>時間</h1>
         <form action="/hours" method="POST">
@@ -22,4 +21,4 @@
             <input type="submit" value="保存"/>
         </form>
     </body>
-</html>
+</x-app-layout>
