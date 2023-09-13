@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('total_cost')" :active="request()->routeIs('total_cost')">
                         {{ __('合計') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('culculate_hour')" :active="request()->routeIs('culculate_hour')">
+                        {{ __('時間') }}
+                    </x-nav-link>
                 </div>
             </div>
 
