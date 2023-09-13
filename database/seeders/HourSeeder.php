@@ -17,6 +17,7 @@ class HourSeeder extends Seeder
     public function run()
     {
         DB::table('hours')->insert([
+            'user_id' => '1',
             'current_cost' => '130000',
             'income' => '200000',
             'hourly_wage' => '1000',

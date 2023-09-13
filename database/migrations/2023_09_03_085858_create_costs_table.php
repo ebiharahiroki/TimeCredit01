@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('costs', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
             $table->integer('rent');
             $table->integer('water_cost');
             $table->integer('utilitiy_cost');
             $table->integer('food_cost');
             $table->integer('phone_cost');
             $table->integer('other_cost');
+            $table->integer('total_cost');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('hours', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->integer('current_cost');
             $table->integer('income');
             $table->integer('hourly_wage');
