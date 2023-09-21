@@ -30,7 +30,7 @@
                 <p class="other_cost__error" style="color:red">{{ $errors->first('cost.other_cost') }}</p>
             </div>
             <input type="submit" value="保存"/>
-            <a href='costs/total_cost'>合計</a>
+        </form>
         <div class="footer">
             <a href="/">戻る</a>
         </div>
