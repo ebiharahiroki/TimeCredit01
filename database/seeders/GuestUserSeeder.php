@@ -5,11 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use DateTime;
 
-class UserSeeder extends Seeder
+class GuestUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,10 +16,9 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => '蛯原弘貴',
-            'email' => 'ebihara.engineer@gmail.com',
-            'password' => Hash::make('nxc@mcp1enk7PBW4gnw'),
+        DB::table('guestuser')->insert([
+            'name' => 'ゲストユーザー',
+            'email' => 'guest@guest.com',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             ]);

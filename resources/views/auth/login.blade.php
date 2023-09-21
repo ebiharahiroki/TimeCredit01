@@ -43,5 +43,11 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
+        
+        <button class="btn btn-success">
+            <a href="{{ route('login') }}" class="text-white">
+                ゲストログイン
+            </a>
+        </button>
     </form>
 </x-guest-layout>
