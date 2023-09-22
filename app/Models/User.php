@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Cost;
+use App\Models\Hour;
 
 class User extends Authenticatable
 {
@@ -46,5 +47,10 @@ class User extends Authenticatable
     public function costs()
     {
         return $this->hasMany(Cost::class);
+    }
+    
+    public function hours()
+    {
+        return $this->hasMany(Hour::class);
     }
 }

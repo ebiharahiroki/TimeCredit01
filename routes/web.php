@@ -48,7 +48,10 @@ Route::controller(CostController::class)->middleware(['auth'])->group(function()
     Route::delete('/costs/{cost}', 'delete')->name('delete');
 });
 
-Route::get('/hours/culculate_hour', [HourController::class, 'culculate_hour'])->name('culculate_hour')->middleware("auth");
+Route::controller(HourController::class)->middleware(['auth'])->group(function(){
+Route::get('/hours/createHour', 'createHour')->name('createHour');
+Route::post('/hours', 'storeHour')->name('storeHour');
+});
 
 
 Route::middleware('auth')->group(function () {

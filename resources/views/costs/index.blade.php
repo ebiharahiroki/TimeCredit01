@@ -11,6 +11,9 @@
             <a href='costs/create_cost'>生活費の登録</a>
         </div>
         <div>
+            <a href='/hours/createHour'>貯められた時間の登録</a>
+        </div>
+        <div>
             <table>
                 <tr>
                     <td class="border border-black">
@@ -68,6 +71,29 @@
                 </form>
                 <div class="edit">
                     <a href="/costs/{{ $cost->id }}/edit">編集</a>
+                </div>
+            @endforeach
+        </div>
+        <div>
+            <h2>時間</h2>
+        </div>
+        <div class="hours">
+            @foreach ($hours as $hour)
+                <div class 'hour'>
+                    <h2 class="current_cost">
+                        <a href="/hours/{{ $hour->id }}">{{ $hour->current_cost }}</a>
+                    </h2>
+                    <h2 class="current_cost">
+                        <a href="/hours/{{ $hour->id }}">{{ $hour->amount }}</a>
+                    </h2>
+                </div>
+                <form action="/hours/{{ $hour->id }}" id="form_{{ $hour->id }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" onclick="deleteCost({{ $hour->id }})">削除</button>
+                </form>
+                <div class="edit">
+                    <a href="/costs/{{ $hour->id }}/edit">編集</a>
                 </div>
             @endforeach
         </div>

@@ -5,6 +5,7 @@
     <body>
         <form action="/costs" method="POST">
             @csrf
+            <div><h2>生活費</h2></div>
             <div class="rent">
                 <input type="text" name="cost[rent]" placeholder="家賃" value="{{ old('cost.rent') }}"/>
                 <p class="rent__error" style="color:red">{{ $errors->first('cost.rent') }}</p>
@@ -34,6 +35,5 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
-        <h2>ログインユーザー：{{ Auth::user()->name }}</h2>
     </body>
 </x-app-layout>

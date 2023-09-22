@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cost;
+use App\Models\Hour; 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CostRequest;
 
 class CostController extends Controller
 {
-    public function index(Cost $cost)
+    public function index(Cost $cost, Hour $hour)
     {
-        return view('costs.index')->with(['costs' => Auth::user()->costs()->get()]);
+        return view('costs.index')->with(['costs' => Auth::user()->costs()->get()])->with(['hours' => Auth::user()->hours()->get()]);
     }
     
     public function january(Cost $cost)
@@ -82,7 +83,7 @@ class CostController extends Controller
     
     public function create_cost(Cost $cost)
     {
-        return view('costs.create_cost');
+        return view('costs.create_cost')->with(['cost' => $cost]);
     }
     
     public function total_cost(Cost $cost)
@@ -110,7 +111,7 @@ class CostController extends Controller
         $input += ['user_id' => $request->user()->id];  
         $input += ['total_cost' => $input["rent"] + $input["water_cost"] + $input["utilitiy_cost"] + $input["food_cost"] + $input["phone_cost"] + $input["other_cost"]];  
         $cost->fill($input)->save();
-        return redirect('/costs/' . $cost->id);
+        return redirect('/hours/culculateHour');
     }
     
     public function edit(Cost $cost)

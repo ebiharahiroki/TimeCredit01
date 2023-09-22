@@ -8,6 +8,7 @@
         <form action="/costs/{{ $cost->id }}" method="POST">
             @csrf
             @method('PUT')
+            <div><h2>生活費</h2></div>
             <div class="content_rent">
                 <h2>家賃</h2>
                 <input type="text" name="cost[rent]" placeholder="家賃" value="{{ $cost->rent }}"/>
@@ -31,6 +32,19 @@
             <div class="content_other_cost">
                 <h2>その他</h2>
                 <input type="text" name="cost[other_cost]" placeholder="その他" value="{{ $cost->other_cost }}"/>
+            </div>
+            <div><h2>貯められた時間</h2></div>
+            <div class="current_cost">
+                <input type="text" name="hour[current_cost]" placeholder="生活費" value="{{ $cost->total_cost }}"/>
+            </div>
+            <div class="income">
+                <input type="text" name="hour[income]" placeholder="収入"/>
+            </div>
+            <div class="hourly_wage">
+                <input type="text" name="hour[hourly_wage]" placeholder="時給"/>
+            </div>
+            <div class="amount">
+                <input type="text" name="hour[amount]" placeholder="貯められた時間"/>
             </div>
             <input type="submit" value="更新"/>
         </form>
