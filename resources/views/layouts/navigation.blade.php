@@ -15,17 +15,11 @@
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                         {{ __('一覧') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('create_cost')" :active="request()->routeIs('create_cost')">
+                    <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
                         {{ __('作成') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('store')" :active="request()->routeIs('store')">
-                        {{ __('保存') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('total_cost')" :active="request()->routeIs('total_cost')">
-                        {{ __('合計') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('culculate_hour')" :active="request()->routeIs('culculate_hour')">
-                        {{ __('時間') }}
+                    <x-nav-link :href="route('chart')" :active="request()->routeIs('chart')">
+                        {{ __('グラフ') }}
                     </x-nav-link>
                 </div>
             </div>

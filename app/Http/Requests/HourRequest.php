@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CostRequest extends FormRequest
+class HourRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,8 @@ class CostRequest extends FormRequest
                 'food_cost' => 'required|integer|min:0',
                 'phone_cost' => 'required|integer|min:0',
                 'other_cost' => 'required|integer|min:0',
-                'total_cost' => 'required|integer|min:0',
+                'income' => 'required|integer|min:0',
+                'hourly_wage' => 'required|integer|min:0',
         ];
     }
 }
