@@ -3,6 +3,8 @@
         詳細
     </x-slot>
     <body>
+        <h2 class="year">{{ $hour->year->year }}</h2>
+        <h2 class="month">{{ $hour->month->month }}</h2>
         <h1>生活費</h1>
         <div class="hours">
             <h2>家賃</h2>

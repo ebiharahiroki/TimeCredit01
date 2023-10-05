@@ -10,8 +10,8 @@ class Year extends Model
 {
     use HasFactory;
     
-    public function hour()
+    public function hours()
     {
-        return $this->hasOne(Hour::class);
+        return $this->hasMany(Hour::class);
     }
 }

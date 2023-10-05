@@ -23,6 +23,10 @@
                     @endforeach
                 </select>
             </div>
+            <div class="target_value">
+                <input type="text" name="hour[target_value]" placeholder="＋αで欲しい自由時間" value="{{ old('hour.target_value') }}"/>
+                <p class="target_value" style="color:red">{{ $errors->first('hour.target_value') }}</p>
+            </div>
             <div class="rent">
                 <input type="text" name="hour[rent]" placeholder="家賃" value="{{ old('hour.rent') }}"/>
                 <p class="rent__error" style="color:red">{{ $errors->first('hour.rent') }}</p>
@@ -52,9 +56,9 @@
                 <input type="text" name="hour[income]" placeholder="収入" value="{{ old('hour.income') }}"/>
                 <p class="income__error" style="color:red">{{ $errors->first('hour.income') }}</p>
             </div>
-            <div class="hourly_wage">
-                <input type="text" name="hour[hourly_wage]" placeholder="時給" value="{{ old('hour.hourly_wage') }}"/>
-                <p class="hourly_wage__error" style="color:red">{{ $errors->first('hour.hourly_wage') }}</p>
+            <div class="hourly_wtarget_value">
+                <input type="text" name="hour[hourly_wtarget_value]" placeholder="時給" value="{{ old('hour.hourly_wtarget_value') }}"/>
+                <p class="hourly_wtarget_value__error" style="color:red">{{ $errors->first('hour.hourly_wtarget_value') }}</p>
             </div>
             <input type="submit" value="保存"/>
         </form>

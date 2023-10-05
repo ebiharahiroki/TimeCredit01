@@ -17,13 +17,13 @@ class YearSeeder extends Seeder
     public function run()
     {
         DB::table('years')->insert([
-            'year' => '2023',
+            'year' => '2023年',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             ]);
             
         DB::table('years')->insert([
-            'year' => '2024',
+            'year' => '2024年',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             ]);

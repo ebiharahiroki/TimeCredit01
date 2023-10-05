@@ -32,9 +32,9 @@ class HourController extends Controller
         return redirect('/');
     }
     
-    public function show(Hour $hour)
+    public function show(Hour $hour, Year $year, Month $month)
     {
-        return view('hours.show')->with(['hour' => $hour]);
+        return view('hours.show')->with(['hour' => $hour])->with(['years' => $year->get()])->with(['months' => $month->get()]);
     }
     
     
@@ -59,9 +59,9 @@ class HourController extends Controller
     
     
     
-    public function edit(Hour $hour)
+    public function edit(Hour $hour, Year $year, Month $month)
     {
-        return view('hours.edit')->with(['hour' => $hour]);
+        return view('hours.edit')->with(['hour' => $hour])->with(['years' => $year->get()])->with(['months' => $month->get()]);
     }
     
     public function update(Hour $hour, Request $request)
@@ -72,7 +72,7 @@ class HourController extends Controller
         $input += ['amount' => ($input["income"] - $input["total_cost"]) / $input["hourly_wage"]];  
         $hour->fill($input)->save();
         
-        return redirect('/' . $hour->id);
+        return redirect('/hours/' . $hour->id);
     }
     
     public function delete(Hour $hour)
