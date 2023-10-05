@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
 Route::controller(TwitterController::class)->prefix('auth')->middleware('auth')->group(function () {
     Route::match(['get', 'post'], '/login', 'login');
     Route::get('/collback', 'callbakc');
-    Route::match(['get', 'post'], '/mypage', 'mypage');
+    Route::match(['get', 'post'], '/tweet', 'tweet');
 });
 
 require __DIR__.'/auth.php';

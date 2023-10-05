@@ -4,8 +4,8 @@
     </x-slot>
     <body>
         {{ $year }}
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="紹介文のテキスト" data-hashtags="タグ1,タグ2,タグ3" data-show-count="false">Tweet</a>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a href="/auth/login" class="twitter-share-button">Tweet</a>
+        <!--<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
     <!--    <div>-->
     <!--        <canvas id="myChart"></canvas>-->
     <!--    </div>-->

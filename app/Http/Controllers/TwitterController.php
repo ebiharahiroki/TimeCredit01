@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Hour; 
-use App\Models\Month; 
-use App\Models\Year; 
+use App\Models\TwitterUser; 
 use Laravel\Socialite\Facades\Socialite;
 
 class TwitterController extends Controller
@@ -50,37 +48,37 @@ class TwitterController extends Controller
         
     public function tweet(Request $request)
     {
+        if (!$request->Method('post')) {
+            return view('hours.chart');
+        }    
+        
         //認証情報を取得
-        $oauth_token = $request->session()->get('oauth_token');
-        $oauth_verifier = $request->session()->get('oauth_verifier');
+        $twitter_id = $request->session()->get('twitter_id');
+        $twitter_user = TwitterUser::getFirstRecordByTwitterId($twitter_id);
+        
+        $access_token = $twitter_user->access_token;
+        $client_id = config('service.twitter.client_id');
+        $client_secret = config('service.twitter.client_secret');
+        
+        if ($twitter_user->token_limit->lt(Carbon::now())) {
+            return redirect(route('hours.chart'))->with('auth_error', 'もう一度ログインしてください');
+        }
     
         $twitter = new TwitterOAuth(
-            config('services.twitter.consumer_key'),
-            config('services.twitter.consumer_secret'),
-            config('services.twitter.access_token'),
-            config('services.twitter.access_secret'),
+            $client_id,
+            $client_secret,
+            null,
+            $access_token,
         );
-    
-        $accessToken = $twitter->oauth("oauth/access_token", ["oauth_token" => $oauth_token,"oauth_verifier" => $oauth_verifier]);
-    
-        $oauthToken = $accessToken['oauth_token'];
-        $oauthTokenSecret =$accessToken['oauth_token_secret'];
-        //認証したユーザーのアカウントを使ってツイートができるようになります。
-        $usersTwitter = new TwitterOAuth(
-            config('services.twitter.consumer_key'),
-            config('services.twitter.consumer_secret'),
-            $oauthToken,
-            $oauthTokenSecret
-        );
-    
-        // 画像をTwitterへアップロード
-        //media/uploadエンドポイントを使います。
-        $media = $usersTwitter->upload('media/upload',['media' => "画像のパス"]);
-    
-        //Twitterへ投稿する
-        $usersTwitter->post("statuses/update", [
-            "status" => "ツイートするテキスト",
-            "media_ids" => $media->media_id_string,
-        ]);
+        
+        $twitter->setApiVersion("2");
+        
+        $twitter->post("tweets", ["text" => $request->input('tweet'), true]);
+        if ($twitter->getLastHttpCode() == 201) {
+            $result_message = 'ツイートしました。';
+        } else {
+            $result_message = 'ツイートに失敗しました。';
+        }
+        return view('hours.chart', ['flashmessage' => 'result_message']);
     }
 }    
