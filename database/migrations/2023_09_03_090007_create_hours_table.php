@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->bigInteger('month_id')->unsigned();
             $table->bigInteger('year_id')->unsigned();
+            $table->integer('target_value');
             $table->integer('rent');
             $table->integer('water_cost');
             $table->integer('utilitiy_cost');

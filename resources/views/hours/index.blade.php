@@ -11,7 +11,7 @@
             <a href='hours/create'>作成</a>
         </div>
         <div>
-            <a href='/hours/create'>働かなくてよかった時間の登録</a>
+            <a href='/hours/create'>働かずに自由に使えた時間の登録</a>
         </div>
         <div class="hours">
             @foreach ($hours as $hour)
@@ -22,11 +22,11 @@
                 <div class 'hour'>
                     <div class="total_cost">
                         <h2>生活費</h2>
-                        <a href="/hours/{{ $hour->id }}">{{ $hour->total_cost }}</a>
+                        <a href="/hours/{{ $hour->id }}">{{ $hour->total_cost }}円</a>
                     </div>
                     <div class="amount">
-                        <h2>働かなくてよかった時間</h2>
-                                <a href="/hours/{{ $hour->id }}">{{ $hour->amount }}</a>
+                        <h2>働かずに自由に使えた時間</h2>
+                        <a href="/hours/{{ $hour->id }}">{{ $hour->amount }}時間</a>
                     </div>
                 </div>
                 <form action="/hours/{{ $hour->id }}" id="form_{{ $hour->id }}" method="post">

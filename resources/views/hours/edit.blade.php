@@ -3,11 +3,28 @@
         編集
     </x-slot>
     <body>
-        <h1>生活費編集</h1>
         <div class="content">
         <form action="/hours/{{ $hour->id }}" method="POST">
             @csrf
             @method('PUT')
+            <h2 class="year">{{ $hour->year->year }}</h2>
+            <h2 class="month">{{ $hour->month->month }}</h2>
+            <div class="Year">
+                <h2>Year</h2>
+                <select name="hour[year_id]">
+                    @foreach($years as $year)
+                        <option value="{{ $year->id }}">{{ $year->year }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="Month">
+                <h2>Month</h2>
+                <select name="hour[month_id]">
+                    @foreach($months as $month)
+                        <option value="{{ $month->id }}">{{ $month->month }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div><h2>生活費</h2></div>
             <div class="content_rent">
                 <h2>家賃</h2>
