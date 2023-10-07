@@ -47,10 +47,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::controller(TwitterController::class)->prefix('auth')->middleware('auth')->group(function () {
-    Route::match(['get', 'post'], '/login', 'login');
-    Route::get('/collback', 'callbakc');
-    Route::match(['get', 'post'], '/tweet', 'tweet');
+Route::prefix('twitter')->group(function () {
+    //ログイン
+    Route::match(['get', 'post'], '/login', [App\Http\Controllers\TwitterController::class, 'login'])->name('twitter.mypage.login');
+    //認証リダイレクト
+    Route::get('/callback', [App\Http\Controllers\TwitterController::class, 'callback'])->name('twitter.mypage.callback');
+    //ツイートページ
+    Route::group(['middleware' => 'twitter'], function () {
+        Route::match(['get', 'post'], '/tweet', [App\Http\Controllers\TwitterController::class, 'tweet'])->name('twitter.mypage.index');
+    });
 });
+
+// Route::controller(TwitterController::class)->prefix('auth')->middleware('auth')->group(function () {
+//     Route::match(['get', 'post'], '/login', 'login');
+//     Route::get('/collback', 'callbakck');
+//     Route::group(['middleware' => 'twitter'], function () {
+//         Route::match(['get', 'post'], '/tweet', [App\Http\Controllers\TwitterController::class, 'tweet'])
+//     // });
+//     // Route::match(['get', 'post'], '/tweet', 'tweet');
+// });
 
 require __DIR__.'/auth.php';

@@ -12,9 +12,9 @@ use App\Http\Requests\HourRequest;
 
 class HourController extends Controller
 {
-    public function index(Hour $hour)
+    public function index(Hour $hour, Year $year)
     {
-        return view('hours.index')->with(['hours' => Auth::user()->hours()->get()]);
+        return view('hours.index')->with(['hours' => $hour->order()])->with(['years' => Auth::user()->years()->get()]);
     }
     
     public function create(Hour $hour, Year $year, Month $month)

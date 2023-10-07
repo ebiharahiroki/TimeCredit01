@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Month;
 use App\Models\Year;
 use App\Models\Hour;
 use Illuminate\Support\Facades\DB;
 
 class ChartController extends Controller
 {
-    public function chart(Hour $hour, Month $month, Year $year)
+    public function chart(Hour $hour, Year $year)
     {
         // $labels = DB::table('months')->pluck('month');
         // $data = Hour::where('year_id', '1')->orderBy("month_id", "ASC")->pluck('amount', 'month_id');
@@ -30,6 +29,6 @@ class ChartController extends Controller
                 $array["$i 月"] = 0;
             }
         }
-        return view('hours.chart', compact('array'))->with(['hour' => $hour])->with(['year' => $year]);
+        return view('hours.chart', compact('array'))->with(['year' => $year]);
     }
 }

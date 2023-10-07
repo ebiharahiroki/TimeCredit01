@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Year;
 use App\Models\Month;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Hour extends Model
 {
@@ -19,6 +20,7 @@ class Hour extends Model
         'user_id',
         'year_id',
         'month_id',
+        'target_value',
         'rent',
         'water_cost',
         'utilitiy_cost',
@@ -30,6 +32,14 @@ class Hour extends Model
         'hourly_wage',
         'amount',
 ];
+    public function order()
+    {
+        // $hours = Auth::user()->hours()->get();
+        
+        
+        
+        return $this->orderBy('month_id', 'ASC')->orderBy('year_id', 'DESC')->get();
+    }
     
     public function user()
     {

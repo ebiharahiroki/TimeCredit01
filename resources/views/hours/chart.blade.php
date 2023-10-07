@@ -1,15 +1,7 @@
 <x-app-layout>
-    <x-slot name="header">
-        グラフ
-    </x-slot>
     <body>
         {{ $year }}
-        <a href="/auth/login" class="twitter-share-button">Tweet</a>
-        <!--<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
-    <!--    <div>-->
-    <!--        <canvas id="myChart"></canvas>-->
-    <!--    </div>-->
-        <!--<script src="./time/resources/js/chartjs.js"></script>-->
+        <a href="/twitter/login" class="twitter-share-button">Tweet</a>
         <div style="width: 50%">
             <canvas id="chart"></canvas>
         </div>
