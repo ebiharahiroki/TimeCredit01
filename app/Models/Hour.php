@@ -34,11 +34,10 @@ class Hour extends Model
 ];
     public function order()
     {
-        // $hours = Auth::user()->hours()->get();
         
         
         
-        return $this->orderBy('month_id', 'ASC')->orderBy('year_id', 'DESC')->get();
+        return $this->orderBy('year_id', 'DESC')->orderBy('month_id', 'ASC')->get();
     }
     
     public function user()

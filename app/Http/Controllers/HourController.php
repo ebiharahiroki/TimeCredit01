@@ -14,12 +14,14 @@ class HourController extends Controller
 {
     public function index(Hour $hour, Year $year)
     {
-        return view('hours.index')->with(['hours' => $hour->order()])->with(['years' => Auth::user()->years()->get()]);
+        $hours = Auth::user()->hours()->orderBy('year_id', 'DESC')->orderBy('month_id', 'ASC')->get();
+        return view('hours.index')->with(['hours' => $hours]);
     }
     
     public function create(Hour $hour, Year $year, Month $month)
     {
-        return view('hours.create')->with(['hour' => $hour])->with(['years' => $year->get()])->with(['months' => $month->get()]);
+        return view('hours.create')->with(['hour' => $hour])->with(['years' => $year->get()])
+                                   ->with(['months' => $month->get()]);
     }
     
     public function store(Request $request, Hour $hour)

@@ -49,12 +49,13 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('twitter')->group(function () {
     //ログイン
-    Route::match(['get', 'post'], '/login', [App\Http\Controllers\TwitterController::class, 'login'])->name('twitter.mypage.login');
+    Route::match(['get', 'post'], '/login', [App\Http\Controllers\TwitterController::class, 'login']);
+    Route::get('/logout', [App\Http\Controllers\TwitterController::class, 'logout']);
     //認証リダイレクト
-    Route::get('/callback', [App\Http\Controllers\TwitterController::class, 'callback'])->name('twitter.mypage.callback');
+    Route::get('/callback', [App\Http\Controllers\TwitterController::class, 'callback']);
     //ツイートページ
     Route::group(['middleware' => 'twitter'], function () {
-        Route::match(['get', 'post'], '/tweet', [App\Http\Controllers\TwitterController::class, 'tweet'])->name('twitter.mypage.index');
+        Route::match(['get', 'post'], '/tweet', [App\Http\Controllers\TwitterController::class, 'tweet']);
     });
 });
 

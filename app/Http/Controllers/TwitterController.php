@@ -7,15 +7,12 @@ use App\Models\TwitterUser;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\Year;
 use App\Models\Hour;
+use Illuminate\Support\Facades\Auth;
 
 class TwitterController extends Controller
 {
     public function login(Request $request, Hour $hour, Year $year)
     {
-        $data = Hour::where('year_id', '1')->orderBy("month_id", "ASC")->pluck("amount")->toArray();
-        $month = Hour::select('month_id')->where('year_id', '1')->orderBy("month_id", "ASC")->pluck("month_id")->toArray();
-        $year = Year::where('year', '2023年')->value('year');
-        
         if (!$request->isMethod('post')) {
             return view('hours.chart');
         }
@@ -24,19 +21,15 @@ class TwitterController extends Controller
             ->with(['year' => $year])
             ->scopes(['tweet.read', 'tweet.write', 'users.read'])
             ->redirect();
-            
         
-        $array = [];
-        
-        for($i = 1; $i < 13; $i++){
-            if(in_array($i, $month)){
-                $array["$i 月"] = array_shift($data);
-            }else{
-                $array["$i 月"] = 0;
-            }
-        }
         return view('hours.chart', compact('array'))->with(['year' => $year]);
     }
+    
+    // public function logout(Request $request)
+    // {
+    //     Auth::logout();
+    //     return redirect('/');
+    // }
         
     public function callback(Request $request)
     {
