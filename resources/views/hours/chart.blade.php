@@ -6,6 +6,7 @@
              @csrf
             <input type="submit" value="Tweet">
         </form>
+        <a href="https://twitter.com/intent/tweet?text=hello">ツイート</a>
         </div>
         <!--<a href="/twitter/login" class="twitter-share-button">Tweet</a>-->
         <div class="flex items-center justify-center font-sans font-bold text-gray-900 pt-26">

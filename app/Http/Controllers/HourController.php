@@ -20,12 +20,21 @@ class HourController extends Controller
     
     public function create(Hour $hour, Year $year, Month $month)
     {
-        return view('hours.create')->with(['hour' => $hour])->with(['years' => $year->get()])
+        return view('hours.create')->with(['years' => $year->get()])
                                    ->with(['months' => $month->get()]);
     }
     
-    public function store(Request $request, Hour $hour)
+    public function store(HourRequest $request, Hour $hour)
     {
+        $input = $request['hour'];
+        
+        $exist = Hour::where('year_id', $input['year_id'])->where('month_id', $input['month_id'])->whereNull('deleted_at')->exists();
+        
+        if ($exist)
+        {
+            return redirect('/hours/create')->with('status', 'すでに同じ年月のデータが登録されています。');
+        }
+        
         $input = $request['hour'];
         $input += ['user_id' => $request->user()->id];  
         $input += ['total_cost' => $input["rent"] + $input["water_cost"] + $input["utilitiy_cost"] + $input["food_cost"] + $input["phone_cost"] + $input["other_cost"]]; 

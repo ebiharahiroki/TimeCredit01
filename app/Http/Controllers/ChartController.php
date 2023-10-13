@@ -6,19 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Year;
 use App\Models\Hour;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ChartController extends Controller
 {
     public function chart(Hour $hour, Year $year)
     {
-        // $labels = DB::table('months')->pluck('month');
-        // $data = Hour::where('year_id', '1')->orderBy("month_id", "ASC")->pluck('amount', 'month_id');
-        
-        $data = Hour::where('year_id', '1')->orderBy("month_id", "ASC")->pluck("amount")->toArray();
+        $data = Auth::user()->hours()->where('year_id', '1')->orderBy("month_id", "ASC")->pluck("amount")->toArray();
         $month = Hour::select('month_id')->where('year_id', '1')->orderBy("month_id", "ASC")->pluck("month_id")->toArray();
         $year = Year::where('year', '2023年')->value('year');
-        // dd($month);
-        // $month = array_map('intval', $month);
         
         $array = [];
         
