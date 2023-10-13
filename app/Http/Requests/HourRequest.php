@@ -11,6 +11,10 @@ class HourRequest extends FormRequest
      *
      * @return bool
      */
+    public function authorize()
+    {
+        return true;
+    }
     
     /**
      * Get the validation rules that apply to the request.
@@ -20,6 +24,7 @@ class HourRequest extends FormRequest
     public function rules()
     {
         return [
+                'target_value' => 'required|integer|min:0',
                 'rent' => 'required|integer|min:0',
                 'water_cost' => 'required|integer|min:0',
                 'utilitiy_cost' => 'required|integer|min:0',

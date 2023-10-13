@@ -1,15 +1,15 @@
 <x-app-layout>
-    <x-slot name="header">
-        グラフ
-    </x-slot>
     <body>
-        {{ $year }}
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="紹介文のテキスト" data-hashtags="タグ1,タグ2,タグ3" data-show-count="false">Tweet</a>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <!--    <div>-->
-    <!--        <canvas id="myChart"></canvas>-->
-    <!--    </div>-->
-        <!--<script src="./time/resources/js/chartjs.js"></script>-->
+        <div class="text-center px-1 font-sans font-bold text-gray-900 pt-20">
+            {{ $year }}
+         <form action="/twitter/login" method="post">
+             @csrf
+            <input type="submit" value="Tweet">
+        </form>
+        <a href="https://twitter.com/intent/tweet?text=hello">ツイート</a>
+        </div>
+        <!--<a href="/twitter/login" class="twitter-share-button">Tweet</a>-->
+        <div class="flex items-center justify-center font-sans font-bold text-gray-900 pt-26">
         <div style="width: 50%">
             <canvas id="chart"></canvas>
         </div>
@@ -36,5 +36,6 @@
                 }
             });
         </script>
+        </div>
     </body>
 </x-app-layout>

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Cost;
 use App\Models\Hour;
+use App\Models\Year;
 
 class User extends Authenticatable
 {
@@ -47,5 +47,10 @@ class User extends Authenticatable
     public function hours()
     {
         return $this->hasMany(Hour::class);
+    }
+    
+    public function years()
+    {
+        return $this->hasMany(Year::class);
     }
 }

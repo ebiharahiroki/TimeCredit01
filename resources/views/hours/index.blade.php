@@ -1,57 +1,90 @@
 <x-app-layout>
-    <x-slot name="header">
-        一覧
-    </x-slot>
-    <body>
-        <div class="font-sans">
-        <div class="font-bold">
-        <div class="text-xl"> 
-        <div class="bg-gradient-to-b"> 
-        <div>
-            <a href='hours/create'>作成</a>
-        </div>
-        <div>
-            <a href='/hours/create'>働かずに自由に使えた時間の登録</a>
-        </div>
-        <div class="hours">
-            @foreach ($hours as $hour)
-                <div class="year&month">
-                    <a href="">{{ $hour->year->year }}</a>
-                    <a href="">{{ $hour->month->month }}</a>
+  <body>
+    <div class="hours">
+      @foreach ($hours as $hour)
+      <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+        <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-4 font-sans text-gray-900">年月</th>
+              <th scope="col" class="px-6 py-4 font-sans text-gray-900">自由に使えた時間</th>
+              <th scope="col" class="px-6 py-4 font-sans text-gray-900">目標値</th>
+              <th scope="col" class="px-6 py-4 font-sans text-gray-900">生活費</th>
+              <th scope="col" class="px-6 py-4 font-sans text-gray-900"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+            <tr class="hover:bg-gray-50">
+              <th class="flex gap-3 px-6 py-4 font-normal text-gray-1000">
+                <div class="relative h-10 w-10">
+                  <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+                    <span class="py-2 font-semibold title-font text-gray-900">{{ $hour->month->month }}</span>
+                  </div>
                 </div>
-                <div class 'hour'>
-                    <div class="total_cost">
-                        <h2>生活費</h2>
-                        <a href="/hours/{{ $hour->id }}">{{ $hour->total_cost }}円</a>
-                    </div>
-                    <div class="amount">
-                        <h2>働かずに自由に使えた時間</h2>
-                        <a href="/hours/{{ $hour->id }}">{{ $hour->amount }}時間</a>
-                    </div>
+                <div class="text-sm">
+                  <div class="py-2 font-medium text-gray-600">{{ $hour->year->year }}</div>
                 </div>
-                <form action="/hours/{{ $hour->id }}" id="form_{{ $hour->id }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="button" onclick="deleteHour({{ $hour->id }})">削除</button>
-                </form>
-                <div class="edit">
-                    <a href="/hours/{{ $hour->id }}/edit">編集</a>
+              </th>
+              <td class="px-6 py-4 text-gray-600">{{ $hour->amount }}時間</td>
+              <td class="px-6 py-4 text-gray-600">{{ $hour->target_value }}時間</td>
+              <td class="px-6 py-4 text-gray-600">{{ $hour->total_cost }}円</td>
+              <td class="px-6 py-4">
+                <div class="flex justify-end gap-4">
+                  <form action="/hours/{{ $hour->id }}" id="form_{{ $hour->id }}" method="post">
+                          @csrf
+                          @method('DELETE')
+                  <button type="button" onclick="deleteHour({{ $hour->id }})" x-data="{ tooltip: 'Delete' }" >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-6 w-6"
+                      x-tooltip="tooltip"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                      />
+                    </svg>
+                  </button>
+                  </form>
+                  <a x-data="{ tooltip: 'Edite' }" href="/hours/{{ $hour->id }}/edit">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-6 w-6"
+                      x-tooltip="tooltip"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                      />
+                    </svg>
+                  </a>
                 </div>
-            @endforeach
-        </div>
-        <div>
-        <script>
-            function deleteHour(id) {
-                'use strict'
-                
-                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
-                    document.getElementById(`form_${id}`).submit();
-                }
-            }
-        </script>
-        </div>
-        </div>
-        </div>
-        </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    　@endforeach
+      </div>
+      <div>
+      <script>
+      function deleteHour(id) {
+        'use strict'
+        if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+            document.getElementById(`form_${id}`).submit();
+        }
+      }
+      </script>
+      </div>
     </body>
 </x-app-layout>
