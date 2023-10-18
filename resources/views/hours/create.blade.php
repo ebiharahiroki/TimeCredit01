@@ -1,7 +1,7 @@
 <x-app-layout>
     <body>
         <div class="flex">
-            <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8">
+            <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8 m-4">
                 <h4 class="text-xl font-sans text-gray-900 font-bold">計算方法</h4>
                 <p class="text-xs text-gray-500">数字のみで入力してね</p>
                 <div class="relative px-4">
@@ -83,8 +83,16 @@
                 </div>
             </div>
  
-            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
-                <div class="flex-[2_2_0%] max-w-full mx-auto md:py-6 px-6">
+ 
+ 
+ <div class="flex-[2_2_0%] overflow-hidden rounded-lg border border-gray-200 shadow-md m-4">
+        <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+          <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+            <tr class="hover:bg-gray-50">
+              <td class="px-6 pb-3 text-gray-600">
+                  
+                  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+                <div class="max-w-full mx-auto md:px-6">
                   <div class="max-w-sm mx-auto px-6">
                         <div class="relative flex flex-wrap">
                             <div class="w-full relative">
@@ -233,6 +241,15 @@
                         </div>
                     </div>
                 </div>
+                  
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+ 
+ 
+            
         </div> 
     </body>
 </x-app-layout>

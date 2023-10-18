@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ChartController extends Controller
 {
-    public function chart(Hour $hour, Year $year)
+    public function chart(Hour $hour)
     {
         $data = Auth::user()->hours()->where('year_id', '1')->orderBy("month_id", "ASC")->pluck("amount")->toArray();
-        $month = Hour::select('month_id')->where('year_id', '1')->orderBy("month_id", "ASC")->pluck("month_id")->toArray();
-        $year = Year::where('year', '2023年')->value('year');
+        $month = Hour::where('year_id', '1')->orderBy("month_id", "ASC")->pluck("month_id")->toArray();
         
         $array = [];
         
@@ -25,6 +24,6 @@ class ChartController extends Controller
                 $array["$i 月"] = 0;
             }
         }
-        return view('hours.chart', compact('array'))->with(['year' => $year]);
+        return view('hours.chart', compact('array'));
     }
 }

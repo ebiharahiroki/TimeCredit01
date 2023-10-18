@@ -1,9 +1,9 @@
 <x-app-layout>
   <body>
-    <div class="hours">
+    <div class="hours m-5">
       @foreach ($hours as $hour)
-      <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
-        <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+      <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">
+        <table class="w-full bg-white text-left text-sm text-gray-500">
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" class="px-6 py-4 font-sans text-gray-900">年月</th>
@@ -13,10 +13,10 @@
               <th scope="col" class="px-6 py-4 font-sans text-gray-900"></th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-            <tr class="hover:bg-gray-50">
-              <th class="flex gap-3 px-6 py-4 font-normal text-gray-1000">
-                <div class="relative h-10 w-10">
+          <tbody class="border-t border-gray-100">
+            <tr>
+              <td class="flex gap-3 px-6 py-4 font-normal text-gray-1000">
+                <div class="h-10 w-10">
                   <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
                     <span class="py-2 font-semibold title-font text-gray-900">{{ $hour->month->month }}</span>
                   </div>
@@ -24,7 +24,7 @@
                 <div class="text-sm">
                   <div class="py-2 font-medium text-gray-600">{{ $hour->year->year }}</div>
                 </div>
-              </th>
+              </td>
               <td class="px-6 py-4 text-gray-600">{{ $hour->amount }}時間</td>
               <td class="px-6 py-4 text-gray-600">{{ $hour->target_value }}時間</td>
               <td class="px-6 py-4 text-gray-600">{{ $hour->total_cost }}円</td>

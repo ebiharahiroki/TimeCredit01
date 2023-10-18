@@ -33,7 +33,6 @@ Route::controller(HourController::class)->middleware(['auth'])->group(function()
     Route::get('/hours/{hour}/edit', 'edit');
     Route::put('/hours/{hour}', 'update');
     Route::delete('/hours/{hour}', 'delete');
-    Route::get('/hours/chartjs', 'edit');
 });
 
 Route::controller(ChartController::class)->middleware(['auth'])->group(function(){
