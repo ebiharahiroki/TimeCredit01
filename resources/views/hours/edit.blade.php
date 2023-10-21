@@ -7,8 +7,9 @@
                     <div class="relative flex flex-wrap">
                         <div class="w-full relative">
                             <div class="md:mt-6">
-                                <form action="/hours/store" method="POST">
+                                <form action="/hours/{{ $hour->id }}" method="POST">
                                     @csrf
+                                    @method('PUT')
                                     <div class="mx-auto max-w-lg ">
                                         <div class="Year">
                                             <span class="px-1 font-sans font-bold text-gray-600">Year</span>

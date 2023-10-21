@@ -18,7 +18,7 @@ class HourController extends Controller
         return view('hours.index')->with(['hours' => $hours]);
     }
     
-    public function create(Hour $hour, Year $year, Month $month)
+    public function create(Year $year, Month $month)
     {
         return view('hours.create')->with(['years' => $year->get()])
                                    ->with(['months' => $month->get()]);
@@ -27,59 +27,39 @@ class HourController extends Controller
     public function store(HourRequest $request, Hour $hour)
     {
         $input = $request['hour'];
-        
-        $exist = Hour::where('year_id', $input['year_id'])->where('month_id', $input['month_id'])->whereNull('deleted_at')->exists();
+        $exist = Hour::where('year_id', $input['year_id'])->where('month_id', $input['month_id'])
+                                                          ->whereNull('deleted_at')->exists();
         
         if ($exist)
         {
-            return redirect('/hours/create')->with('status', 'すでに同じ年月のデータが登録されています。');
+            return redirect('/hours/create');
         }
         
-        $input = $request['hour'];
         $input += ['user_id' => $request->user()->id];  
-        $input += ['total_cost' => $input["rent"] + $input["water_cost"] + $input["utilitiy_cost"] + $input["food_cost"] + $input["phone_cost"] + $input["other_cost"]]; 
+        $input += ['total_cost' => $input["rent"] + $input["water_cost"] + $input["utilitiy_cost"] + $input["food_cost"]
+                                 + $input["phone_cost"] + $input["other_cost"]]; 
         $input += ['amount' => ($input["income"] - $input["total_cost"]) / $input["hourly_wage"]];  
         $hour->fill($input)->save();
         return redirect('/');
     }
     
-    public function show(Hour $hour, Year $year, Month $month)
+    public function show(Hour $hour)
     {
-        return view('hours.show')->with(['hour' => $hour])->with(['years' => $year->get()])->with(['months' => $month->get()]);
+        return view('hours.show')->with(['hour' => $hour]);
     }
-    
-    
-    public function total_cost(Cost $cost)
-    {
-        $rent = DB::table('hours')->where('user_id', Auth::user()->id)->value('rent');
-        $water_cost = DB::table('hours')->where('user_id', Auth::user()->id)->value('water_cost');
-        $utilitiy_cost = DB::table('hours')->where('user_id', Auth::user()->id)->value('utilitiy_cost');
-        $food_cost = DB::table('hours')->where('user_id', Auth::user()->id)->value('food_cost');
-        $phone_cost = DB::table('hours')->where('user_id', Auth::user()->id)->value('phone_cost');
-        $other_cost = DB::table('hours')->where('user_id', Auth::user()->id)->value('other_cost');
-        $total = 0;
-        $total += $rent;
-        $total += $water_cost;
-        $total += $utilitiy_cost;
-        $total += $food_cost;
-        $total += $phone_cost;
-        $total += $other_cost;
-        
-        return view('hours.total_cost')->with(['total' => $total]);
-    }
-    
-    
     
     public function edit(Hour $hour, Year $year, Month $month)
     {
-        return view('hours.edit')->with(['hour' => $hour])->with(['years' => $year->get()])->with(['months' => $month->get()]);
+        return view('hours.edit')->with(['hour' => $hour])->with(['years' => $year->get()])
+                                 ->with(['months' => $month->get()]);
     }
     
-    public function update(Hour $hour, Request $request)
+    public function update(HourRequest $request, Hour $hour)
     {
         $input = $request['hour'];
         $input += ['user_id' => $request->user()->id];  
-        $input += ['total_cost' => $input["rent"] + $input["water_cost"] + $input["utilitiy_cost"] + $input["food_cost"] + $input["phone_cost"] + $input["other_cost"]];  
+        $input += ['total_cost' => $input["rent"] + $input["water_cost"] + $input["utilitiy_cost"] + $input["food_cost"]
+                                 + $input["phone_cost"] + $input["other_cost"]];  
         $input += ['amount' => ($input["income"] - $input["total_cost"]) / $input["hourly_wage"]];  
         $hour->fill($input)->save();
         
