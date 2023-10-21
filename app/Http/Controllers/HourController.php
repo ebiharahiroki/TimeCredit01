@@ -27,7 +27,6 @@ class HourController extends Controller
     public function store(HourRequest $request, Hour $hour)
     {
         $input = $request['hour'];
-        
         $exist = Hour::where('year_id', $input['year_id'])->where('month_id', $input['month_id'])
                                                           ->whereNull('deleted_at')->exists();
         
@@ -36,7 +35,6 @@ class HourController extends Controller
             return redirect('/hours/create');
         }
         
-        $input = $request['hour'];
         $input += ['user_id' => $request->user()->id];  
         $input += ['total_cost' => $input["rent"] + $input["water_cost"] + $input["utilitiy_cost"] + $input["food_cost"]
                                  + $input["phone_cost"] + $input["other_cost"]]; 
@@ -56,7 +54,7 @@ class HourController extends Controller
                                  ->with(['months' => $month->get()]);
     }
     
-    public function update(Hour $hour, Request $request)
+    public function update(HourRequest $request, Hour $hour)
     {
         $input = $request['hour'];
         $input += ['user_id' => $request->user()->id];  

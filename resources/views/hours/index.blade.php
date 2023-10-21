@@ -17,8 +17,8 @@
             <tr>
               <td class="flex gap-3 px-6 py-4 font-normal text-gray-1000">
                 <div class="h-10 w-10">
-                  <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                    <span class="py-2 font-semibold title-font text-gray-900">{{ $hour->month->month }}</span>
+                  <div class="flex">
+                    <span class="py-2 font-semibold text-gray-900">{{ $hour->month->month }}</span>
                   </div>
                 </div>
                 <div class="text-sm">

@@ -3,7 +3,7 @@
         <div class="flex">
             <div class="flex-1 bg-white rounded-lg shadow-xl mt-4 p-8 m-4">
                 <h4 class="text-xl font-sans text-gray-900 font-bold">計算方法</h4>
-                <p class="text-xs text-gray-500">数字のみで入力してね</p>
+                <p class="text-xs text-gray-500">半角数字のみで入力してね</p>
                 <div class="relative px-4">
                     <div class="absolute h-full border border-dashed border-opacity-20 border-secondary"></div>
 
@@ -121,7 +121,7 @@
                                                 </select>
                                             </div>
                                             <div class="target_value py-1">
-                                                <input placeholder="欲しい自由時間（全て数字のみで入力）" type="text"
+                                                <input placeholder="欲しい自由時間（全て半角数字のみで入力）" type="text"
                                                 x-model="target_value" name="hour[target_value]" class="text-md block
                                                 px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300
                                                 placeholder-gray-600 shadow-md focus:placeholder-gray-500

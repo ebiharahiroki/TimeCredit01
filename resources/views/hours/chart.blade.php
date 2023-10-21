@@ -11,13 +11,6 @@
           <tbody class="divide-y divide-gray-100 border-t border-gray-100">
             <tr class="hover:bg-gray-50">
               <td class="px-6 py-8 text-gray-600">
-        <!--          <div class="text-center px-1 font-sans font-bold text-gray-900">-->
-        <!-- <form action="/twitter/login" method="post">-->
-        <!--     @csrf-->
-        <!--    <input type="submit" value="Tweet">-->
-        <!--</form>-->
-        <!--<a href="https://twitter.com/intent/tweet?text=hello">ツイート</a>-->
-        <!--</div>-->
         <div class="flex items-center justify-center font-sans font-bold text-gray-900 pt-26">
         <div style="width: 65%">
             <canvas id="chart"></canvas>
