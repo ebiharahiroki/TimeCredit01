@@ -12,9 +12,9 @@ use App\Http\Requests\HourRequest;
 
 class HourController extends Controller
 {
-    public function index(Hour $hour, Year $year)
+    public function index()
     {
-        $hours = Auth::user()->hours()->orderBy('year_id', 'DESC')->orderBy('month_id', 'ASC')->get();
+        $hours = Auth::user()->hours()->orderBy('month_id', 'ASC')->get();
         return view('hours.index')->with(['hours' => $hours]);
     }
     
@@ -48,10 +48,9 @@ class HourController extends Controller
         return view('hours.show')->with(['hour' => $hour]);
     }
     
-    public function edit(Hour $hour, Year $year, Month $month)
+    public function edit(Hour $hour)
     {
-        return view('hours.edit')->with(['hour' => $hour])->with(['years' => $year->get()])
-                                 ->with(['months' => $month->get()]);
+        return view('hours.edit')->with(['hour' => $hour]);
     }
     
     public function update(HourRequest $request, Hour $hour)
