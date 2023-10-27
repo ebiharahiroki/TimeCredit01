@@ -22,12 +22,5 @@ class YearSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             ]);
-            
-        DB::table('years')->insert([
-            'year' => '2024年',
-            'user_id' => '1',
-            'created_at' => new DateTime(),
-            'updated_at' => new DateTime(),
-            ]);
     }
 }

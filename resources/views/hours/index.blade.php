@@ -33,7 +33,7 @@
                   <form action="/hours/{{ $hour->id }}" id="form_{{ $hour->id }}" method="post">
                           @csrf
                           @method('DELETE')
-                  <button type="button" onclick="deleteHour({{ $hour->id }})" x-data="{ tooltip: 'Delete' }" >
+                  <button type="button" onclick="deleteHour({{ $hour->id }})">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -41,7 +41,6 @@
                       stroke-width="1.5"
                       stroke="currentColor"
                       class="h-6 w-6"
-                      x-tooltip="tooltip"
                     >
                       <path
                         stroke-linecap="round"
@@ -51,7 +50,7 @@
                     </svg>
                   </button>
                   </form>
-                  <a x-data="{ tooltip: 'Edite' }" href="/hours/{{ $hour->id }}/edit">
+                  <a href="/hours/{{ $hour->id }}/edit">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -59,7 +58,6 @@
                       stroke-width="1.5"
                       stroke="currentColor"
                       class="h-6 w-6"
-                      x-tooltip="tooltip"
                     >
                       <path
                         stroke-linecap="round"

@@ -48,9 +48,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Hour::class);
     }
-    
-    public function years()
-    {
-        return $this->hasMany(Year::class);
-    }
 }

@@ -15,9 +15,4 @@ class Year extends Model
     {
         return $this->hasMany(Hour::class);
     }
-    
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }
