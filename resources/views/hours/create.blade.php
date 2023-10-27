@@ -72,7 +72,7 @@
             
             <!--start::Right Side-->
             <div class="flex basis-3/5 bg-white rounded-lg shadow-xl m-4">
-                <div class="mx-auto my-5">
+                <div class="mx-auto my-5 px-3 w-80">
                     <form action="/hours/store" method="POST">
                         @csrf
                         <div class="Year py-1">
@@ -92,10 +92,10 @@
                             </select>
                         </div>
                         <div class="target_value py-1">
-                            <input placeholder="欲しい自由時間（全て半角数字のみで入力）" type="text"
+                            <input placeholder="欲しい自由時間（全て半角数字入力）" type="text"
                             name="hour[target_value]" class="text-md
                             px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300
-                            placeholder-gray-600 shadow-md focus:border-gray-600"
+                            placeholder-gray-600 shadow-md focus:border-gray-600
                             value="{{ old('hour.target_value') }}"/>
                             <p class="target_value" style="color:red">
                                 {{ $errors->first('hour.target_value') }}

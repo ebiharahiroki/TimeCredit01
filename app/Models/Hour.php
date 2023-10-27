@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Year;
 use App\Models\Month;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Hour extends Model
 {
@@ -34,10 +34,8 @@ class Hour extends Model
 ];
     public function order()
     {
-        
-        
-        
-        return $this->orderBy('year_id', 'DESC')->orderBy('month_id', 'ASC')->get();
+        $hours = Auth::user()->hours()->orderBy('month_id', 'ASC')->get();
+        return $hours;
     }
     
     public function user()

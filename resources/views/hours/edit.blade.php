@@ -74,7 +74,7 @@
         
             <!--start::Right Side-->
             <div class="flex basis-3/5 bg-white rounded-lg shadow-xl m-4">
-                <div class="mx-auto my-5">
+                <div class="mx-auto my-5 w-80">
                 <form action="/hours/{{ $hour->id }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -155,7 +155,7 @@
                             <span class="px-1 font-sans font-bold text-gray-600">時給</span>
                             <input placeholder="時給" type="text" x-model="hourly_wage" name="hour[hourly_wage]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->hourly_wage }}"/>
                         </div>
-                        <input type="submit" value="更新" class="mt-3 text-lg font-semibold bg-gray-800 w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:text-white hover:bg-black"/>
+                        <input type="submit" value="更新" class="mt-3 text-lg font-semibold bg-gray-800 w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:text-white hover:bg-black cursor-pointer"/>
                         <p class="hourly_wage__error" style="color:red">
                                 {{ $errors->first('hour.hourly_wage') }}
                         </p>

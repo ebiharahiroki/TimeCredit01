@@ -4,7 +4,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HourController;
 use App\Http\Controllers\ChartController;
-use App\Http\Controllers\TwitterController;
 
 /*
 |--------------------------------------------------------------------------
