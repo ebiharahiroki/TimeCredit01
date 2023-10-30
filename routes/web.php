@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\HourController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HourController;
-use App\Http\Controllers\ChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::controller(HourController::class)->middleware(['auth'])->group(function(){
+Route::controller(HourController::class)->middleware(['auth'])->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/hours/create', 'create')->name('create');
     Route::post('/hours/store', 'store');
@@ -34,10 +34,9 @@ Route::controller(HourController::class)->middleware(['auth'])->group(function()
     Route::delete('/hours/{hour}', 'delete');
 });
 
-Route::controller(ChartController::class)->middleware(['auth'])->group(function(){
+Route::controller(ChartController::class)->middleware(['auth'])->group(function () {
     Route::get('/chart', 'chart')->name('chart');
 });
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

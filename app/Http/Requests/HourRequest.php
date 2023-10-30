@@ -15,7 +15,7 @@ class HourRequest extends FormRequest
     // {
     //     return true;
     // }
-    
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,15 +24,15 @@ class HourRequest extends FormRequest
     public function rules()
     {
         return [
-                'hour.target_value' => 'required|integer|min:0',
-                'hour.rent' => 'required|integer|min:0',
-                'hour.water_cost' => 'required|integer|min:0',
-                'hour.utilitiy_cost' => 'required|integer|min:0',
-                'hour.food_cost' => 'required|integer|min:0',
-                'hour.phone_cost' => 'required|integer|min:0',
-                'hour.other_cost' => 'required|integer|min:0',
-                'hour.income' => 'required|integer|min:0',
-                'hour.hourly_wage' => 'required|integer|min:0',
+            'hour.target_value' => 'required|integer|min:0',
+            'hour.rent' => 'required|integer|min:0',
+            'hour.water_cost' => 'required|integer|min:0',
+            'hour.utilitiy_cost' => 'required|integer|min:0',
+            'hour.food_cost' => 'required|integer|min:0',
+            'hour.phone_cost' => 'required|integer|min:0',
+            'hour.other_cost' => 'required|integer|min:0',
+            'hour.income' => 'required|integer|min:0',
+            'hour.hourly_wage' => 'required|integer|min:0',
         ];
     }
 }

@@ -4,18 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Year;
-use App\Models\Month;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Hour extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
-    
+
     protected $fillable = [
         'user_id',
         'year_id',
@@ -31,25 +27,27 @@ class Hour extends Model
         'income',
         'hourly_wage',
         'amount',
-];
+    ];
+
     public function order()
     {
         $hours = Auth::user()->hours()->orderBy('month_id', 'ASC')->get();
+
         return $hours;
     }
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function year()
     {
         return $this->belongsTo(Year::class);
     }
-    
+
      public function month()
-    {
-        return $this->belongsTo(Month::class);
-    }
+     {
+         return $this->belongsTo(Month::class);
+     }
 }

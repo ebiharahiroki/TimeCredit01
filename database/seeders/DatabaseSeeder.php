@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
             HourSeeder::class,
             MonthSeeder::class,
             YearSeeder::class,
-            ]);
+        ]);
     }
 }

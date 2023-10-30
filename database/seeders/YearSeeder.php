@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use DateTime;
 
 class YearSeeder extends Seeder
 {
@@ -21,6 +20,6 @@ class YearSeeder extends Seeder
             'user_id' => '1',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
-            ]);
+        ]);
     }
 }
