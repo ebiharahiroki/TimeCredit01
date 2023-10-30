@@ -17,7 +17,6 @@ class YearSeeder extends Seeder
     {
         DB::table('years')->insert([
             'year' => '2023年',
-            'user_id' => '1',
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
