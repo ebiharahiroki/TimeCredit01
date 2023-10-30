@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use DateTime;
 
 class HourSeeder extends Seeder
 {
@@ -34,9 +33,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '2',
             'year_id' => '1',
@@ -54,9 +53,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '3',
             'year_id' => '1',
@@ -74,9 +73,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '4',
             'year_id' => '1',
@@ -94,9 +93,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '5',
             'year_id' => '1',
@@ -114,9 +113,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '6',
             'year_id' => '1',
@@ -134,9 +133,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '7',
             'year_id' => '1',
@@ -154,9 +153,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '8',
             'year_id' => '1',
@@ -174,9 +173,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '9',
             'year_id' => '1',
@@ -194,9 +193,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '10',
             'year_id' => '1',
@@ -214,9 +213,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '11',
             'year_id' => '1',
@@ -234,9 +233,9 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
-            
-            DB::table('hours')->insert([
+        ]);
+
+        DB::table('hours')->insert([
             'user_id' => '1',
             'month_id' => '12',
             'year_id' => '1',
@@ -254,6 +253,6 @@ class HourSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
             'deleted_at' => null,
-            ]);
+        ]);
     }
 }

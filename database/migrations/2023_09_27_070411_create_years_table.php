@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('years', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
             $table->string('year', 5);
             $table->timestamps();
         });

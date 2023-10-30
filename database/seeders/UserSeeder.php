@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use DateTime;
 
 class UserSeeder extends Seeder
 {
@@ -24,6 +22,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('nxc@mcp1enk7PBW4gnw'),
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
-            ]);
+        ]);
     }
 }
