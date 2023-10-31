@@ -35,7 +35,7 @@ class HourController extends Controller
                                                                          + $input['phone_cost'] + $input['other_cost']];
         $input += ['amount' => ($input['income'] - $input['total_cost']) / $input['hourly_wage']];
         if (is_float(['amount'])) {
-            ceil(float ['amount']);
+            ceil(float['amount']);
         }
         $hour->fill($input)->save();
 

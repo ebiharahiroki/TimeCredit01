@@ -36,7 +36,7 @@
 
 ##  linter
 Pintを定期的に実行して、コードスタイルの問題を修正しています。
-<img src="https://github.com/ebiharahiroki/TimeCredit01/assets/132234565/5e6abab2-18c1-4b73-9c27-9fd0bab73398" width="225">
+<img src="https://github.com/ebiharahiroki/TimeCredit01/assets/132234565/98704876-5053-4dc6-940c-1f57196299c1" width="225">
 
 ##  こだわり
 <b>わかりやすい作成フォーム：</b><br>
