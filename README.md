@@ -35,7 +35,7 @@
 <img src="https://github.com/ebiharahiroki/TimeCredit01/assets/132234565/7c718d55-7136-4869-8923-7a5618e2c9cf" width="225">
 
 ##  linter
-Pintを定期的に実行して、コードスタイルの問題を修正しています。
+Pintを定期的に実行して、コードスタイルの問題を修正しています。<br>
 <img src="https://github.com/ebiharahiroki/TimeCredit01/assets/132234565/98704876-5053-4dc6-940c-1f57196299c1" width="225">
 
 ##  こだわり
