@@ -34,6 +34,9 @@ class HourController extends Controller
         $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
                                                                          + $input['phone_cost'] + $input['other_cost']];
         $input += ['amount' => ($input['income'] - $input['total_cost']) / $input['hourly_wage']];
+        if (is_float(['amount'])) {
+            ceil(float['amount']);
+        }
         $hour->fill($input)->save();
 
         return redirect('/');
