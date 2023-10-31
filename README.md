@@ -34,6 +34,10 @@
 <br><b>各テーブル詳細：</b><br>
 <img src="https://github.com/ebiharahiroki/TimeCredit01/assets/132234565/7c718d55-7136-4869-8923-7a5618e2c9cf" width="225">
 
+##  linter
+Pintを定期的に実行して、コードスタイルの問題を修正しています。
+<img src="https://github.com/ebiharahiroki/TimeCredit01/assets/132234565/5e6abab2-18c1-4b73-9c27-9fd0bab73398" width="225">
+
 ##  こだわり
 <b>わかりやすい作成フォーム：</b><br>
 Tailwind CSSを用いて計算の仕方を説明することで、ユーザーは裏で行われている処理を理解し、今何をしているのか分かりやすくなっています<br><br>
