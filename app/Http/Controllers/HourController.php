@@ -6,12 +6,22 @@ use App\Http\Requests\HourRequest;
 use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
+use App\Services\HourService;
 
 class HourController extends Controller
 {
-    public function index(Hour $hour)
+    private $hourService;
+
+    public function __construct(hourService $hourService)
     {
-        return view('hours.index')->with(['hours' => $hour->order()]);
+        $this->hourService = $hourService;
+    }
+
+    public function index()
+    {
+        $list = $this->hourService->getIndex();
+
+        return view('hours.index')->with(['hours' => $list]);
     }
 
     public function create(Year $year, Month $month)
