@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HourRequest;
 use App\Models\Hour;
-use App\Models\Month;
 use App\Models\Year;
+use App\Models\Month;
 use App\Services\HourService;
 
 class HourController extends Controller
@@ -26,8 +26,12 @@ class HourController extends Controller
 
     public function create(Year $year, Month $month)
     {
-        return view('hours.create')->with(['years' => $year->get()])
-                                   ->with(['months' => $month->get()]);
+        $year = $this->hourService->deliverYear($year);
+        
+        $month = $this->hourService->deliverMonth($month);
+        
+        return view('hours.create')->with(['years' => $year])
+                                   ->with(['months' => $month]);
     }
 
     public function store(HourRequest $request, Hour $hour)
