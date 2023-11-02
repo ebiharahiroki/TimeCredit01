@@ -29,13 +29,6 @@ class Hour extends Model
         'amount',
     ];
 
-    public function order()
-    {
-        $hours = Auth::user()->hours()->orderBy('month_id', 'ASC')->get();
-
-        return $hours;
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);

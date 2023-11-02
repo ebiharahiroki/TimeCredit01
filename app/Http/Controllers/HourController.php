@@ -4,20 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HourRequest;
 use App\Models\Hour;
-use App\Models\Month;
 use App\Models\Year;
+use App\Models\Month;
+use App\Services\HourService;
 
 class HourController extends Controller
 {
-    public function index(Hour $hour)
+    private $hourService;
+
+    public function __construct(hourService $hourService)
     {
-        return view('hours.index')->with(['hours' => $hour->order()]);
+        $this->hourService = $hourService;
+    }
+
+    public function index()
+    {
+        $list = $this->hourService->getIndex();
+
+        return view('hours.index')->with(['hours' => $list]);
     }
 
     public function create(Year $year, Month $month)
     {
-        return view('hours.create')->with(['years' => $year->get()])
-                                   ->with(['months' => $month->get()]);
+        $year = $this->hourService->deliverYear($year);
+        
+        $month = $this->hourService->deliverMonth($month);
+        
+        return view('hours.create')->with(['years' => $year])
+                                   ->with(['months' => $month]);
     }
 
     public function store(HourRequest $request, Hour $hour)

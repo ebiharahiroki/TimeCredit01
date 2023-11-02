@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('App\Services\HourserviceInterface', 'App\Services\Hourservice');
+        $this->app->bind('App\Repositories\HourRepositoryInterface', 'App\Repositories\HourRepository');
     }
 
     /**
