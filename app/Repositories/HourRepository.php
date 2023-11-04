@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\Auth;
-use App\Models\Year;
 use App\Models\Month;
+use App\Models\Year;
+use Illuminate\Support\Facades\Auth;
 
 class HourRepository implements HourRepositoryInterface
 {
@@ -14,18 +14,18 @@ class HourRepository implements HourRepositoryInterface
 
         return $hours;
     }
-    
+
     public function getYear(Year $year)
     {
         $years = $year->get();
-        
+
         return $years;
     }
-    
+
         public function getMonth(Month $month)
-    {
-        $months = $month->get();
-        
-        return $months;
-    }
+        {
+            $months = $month->get();
+
+            return $months;
+        }
 }
