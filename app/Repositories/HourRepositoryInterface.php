@@ -13,6 +13,6 @@ interface HourRepositoryInterface
     public function getYear(Year $year);
 
     public function getMonth(Month $month);
-    
+
     public function getMonth_Id(HourRequest $request);
 }

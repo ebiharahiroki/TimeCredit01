@@ -13,6 +13,6 @@ interface HourServiceInterface
     public function deliverYear(Year $year);
 
     public function deliverMonth(Month $month);
-    
+
     public function getForm(HourRequest $request);
 }

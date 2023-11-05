@@ -36,17 +36,17 @@ class HourService implements HourServiceInterface
 
         return $month;
     }
-    
+
     public function getForm(HourRequest $request)
     {
         $year_id = $this->hourRepository->getMonth_Id($request);
-        
+
         if ($year_id) {
             return redirect('/hours/create');
         }
-        
+
         $input = $request['hour'];
-        
+
         $input += ['user_id' => $request->user()->id];
         $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
                                                                          + $input['phone_cost'] + $input['other_cost']];
@@ -54,7 +54,7 @@ class HourService implements HourServiceInterface
         if (is_float(['amount'])) {
             ceil(float['amount']);
         }
-        
+
         return $input;
     }
 }
