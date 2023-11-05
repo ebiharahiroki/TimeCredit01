@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Requests\HourRequest;
 use App\Models\Month;
 use App\Models\Year;
 use App\Repositories\HourRepositoryInterface as HourRepository;
@@ -34,5 +35,26 @@ class HourService implements HourServiceInterface
         $month = $this->hourRepository->getMonth($month);
 
         return $month;
+    }
+    
+    public function getForm(HourRequest $request)
+    {
+        $year_id = $this->hourRepository->getMonth_Id($request);
+        
+        if ($year_id) {
+            return redirect('/hours/create');
+        }
+        
+        $input = $request['hour'];
+        
+        $input += ['user_id' => $request->user()->id];
+        $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
+                                                                         + $input['phone_cost'] + $input['other_cost']];
+        $input += ['amount' => ($input['income'] - $input['total_cost']) / $input['hourly_wage']];
+        if (is_float(['amount'])) {
+            ceil(float['amount']);
+        }
+        
+        return $input;
     }
 }

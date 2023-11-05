@@ -20,7 +20,6 @@ class HourController extends Controller
     public function index()
     {
         $list = $this->hourService->getIndex();
-        dd($list);
 
         return view('hours.index')->with(['hours' => $list]);
     }
@@ -28,31 +27,17 @@ class HourController extends Controller
     public function create(Year $year, Month $month)
     {
         $year = $this->hourService->deliverYear($year);
-
         $month = $this->hourService->deliverMonth($month);
-
+        
         return view('hours.create')->with(['years' => $year])
                                    ->with(['months' => $month]);
     }
 
     public function store(HourRequest $request, Hour $hour)
     {
-        $input = $request['hour'];
-        $exist = Hour::where('year_id', $input['year_id'])->where('month_id', $input['month_id'])
-                                                          ->whereNull('deleted_at')->exists();
-
-        if ($exist) {
-            return redirect('/hours/create');
-        }
-
-        $input += ['user_id' => $request->user()->id];
-        $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
-                                                                         + $input['phone_cost'] + $input['other_cost']];
-        $input += ['amount' => ($input['income'] - $input['total_cost']) / $input['hourly_wage']];
-        if (is_float(['amount'])) {
-            ceil(float['amount']);
-        }
-        $hour->fill($input)->save();
+        $hours = $this->hourService->getForm($request);
+        
+        $hour->fill($hours)->save();
 
         return redirect('/');
     }

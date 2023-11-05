@@ -2,8 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Http\Requests\HourRequest;
 use App\Models\Month;
 use App\Models\Year;
+use App\Models\Hour;
 use Illuminate\Support\Facades\Auth;
 
 class HourRepository implements HourRepositoryInterface
@@ -22,10 +24,18 @@ class HourRepository implements HourRepositoryInterface
         return $years;
     }
 
-        public function getMonth(Month $month)
-        {
-            $months = $month->get();
+    public function getMonth(Month $month)
+    {
+        $months = $month->get();
 
-            return $months;
-        }
+        return $months;
+    }
+        
+    public function getMonth_Id(HourRequest $request)
+    {
+        $input = $request['hour'];
+        $exist = Hour::where('month_id', $input['month_id'])->whereNull('deleted_at')->exists();
+
+        return $exist;
+    }
 }
