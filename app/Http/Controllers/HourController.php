@@ -28,7 +28,7 @@ class HourController extends Controller
     {
         $year = $this->hourService->deliverYear($year);
         $month = $this->hourService->deliverMonth($month);
-        
+
         return view('hours.create')->with(['years' => $year])
                                    ->with(['months' => $month]);
     }
@@ -36,7 +36,7 @@ class HourController extends Controller
     public function store(HourRequest $request, Hour $hour)
     {
         $hours = $this->hourService->getForm($request);
-        
+
         $hour->fill($hours)->save();
 
         return redirect('/');

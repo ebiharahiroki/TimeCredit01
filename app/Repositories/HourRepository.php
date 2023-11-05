@@ -3,9 +3,9 @@
 namespace App\Repositories;
 
 use App\Http\Requests\HourRequest;
+use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
-use App\Models\Hour;
 use Illuminate\Support\Facades\Auth;
 
 class HourRepository implements HourRepositoryInterface
@@ -30,7 +30,7 @@ class HourRepository implements HourRepositoryInterface
 
         return $months;
     }
-        
+
     public function getMonth_Id(HourRequest $request)
     {
         $input = $request['hour'];
