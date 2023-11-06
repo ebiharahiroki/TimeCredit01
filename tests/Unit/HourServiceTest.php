@@ -7,7 +7,6 @@ use App\Models\Year;
 use App\Repositories\HourRepository;
 use App\Services\HourService;
 use Mockery\MockInterface;
-// use PHPUnit\Framework\TestCase;
 use Tests\TestCase;
 
 class HourServiceTest extends TestCase
@@ -17,13 +16,13 @@ class HourServiceTest extends TestCase
     private $hourRepository;
     private $hourService;
 
-    // public function __construct(Year $year, Month $month, HourRepository $hourRepo, HourService $hourService)
-    // {
-    //     $this->year = $year;
-    //     $this->month = $month;
-    //     $this->hourRepository = $hourRepo;
-    //     $this->hourService = $hourService;
-    // }
+    public function __construct(Year $year, Month $month, HourRepository $hourRepo, HourService $hourService)
+    {
+        $this->year = $year;
+        $this->month = $month;
+        $this->hourRepository = $hourRepo;
+        $this->hourService = $hourService;
+    }
     /**
      * A basic unit test example.
      */

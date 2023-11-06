@@ -38,8 +38,8 @@ class Hour extends Model
         return $this->belongsTo(Year::class);
     }
 
-     public function month()
-     {
-         return $this->belongsTo(Month::class);
-     }
+    public function month()
+    {
+        return $this->belongsTo(Month::class);
+    }
 }
