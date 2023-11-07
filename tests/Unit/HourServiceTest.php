@@ -16,33 +16,44 @@ class HourServiceTest extends TestCase
     private $hourRepository;
     private $hourService;
 
-    public function __construct(Year $year, Month $month, HourRepository $hourRepo, HourService $hourService)
-    {
-        $this->year = $year;
-        $this->month = $month;
-        $this->hourRepository = $hourRepo;
-        $this->hourService = $hourService;
-    }
+    // public function __construct(Year $year, Month $month, HourRepository $hourRepo, HourService $hourService)
+    // {
+    //     $this->year = $year;
+    //     $this->month = $month;
+    //     $this->hourRepository = $hourRepo;
+    //     $this->hourService = $hourService;
+    // }
     /**
      * A basic unit test example.
      */
     public function setUp(): void
     {
         parent::setUp();
-
+        $yearInstance = app()->make(Year::class);
+        $this->year = $yearInstance->year($this->year);
         $mock = $this->mock(HourRepository::class, function (MockInterface $mock) {
             $mock->shouldReceive('getIndex')->once()->andReturn('hours');
+            $mock->shouldReceive('getHours')->once()->andReturn('hours');
             $mock->shouldReceive('deliverYear')->once()->with($this->year)->andReturn('year');
+            $mock->shouldReceive('getYear')->once()->with($this->year)->andReturn('years');
             $mock->shouldReceive('deliverMonth')->once()->with($this->month)->andReturn('month');
+            $mock->shouldReceive('getMonth')->once()->with($this->month)->andReturn('months');
         });
 
         $hourRepository = app()->make(HourRepository::class);
         $this->instance(HourRepository::class, $hourRepository);
         $hourService = app()->make(HourService::class);
-        $instanse = $this->hourService->getIndex();
-        $years = $this->hourService->deliverYear($year);
-        $months = $this->hourService->deliverMonth($month);
+        $month = app()->make(Month::class);
+        $instanse = $hourService->getIndex();
+        $years = $hourService->deliverYear($this->year);
+        $months = $hourService->deliverMonth($this->month);
     }
+    
+    // (\Mockery::on(function($actual) use ($year) {
+    //                             $this->assertInstanceOf(Year::class, $actual);
+    //                             $this->assertEquals($year, $actual);
+    //                             return true;
+    //                         }))
 
     public function tearDown(): void
     {

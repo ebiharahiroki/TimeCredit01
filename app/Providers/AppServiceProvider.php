@@ -15,8 +15,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind('App\Services\HourServiceInterface', 'App\Services\Hourservice');
         $this->app->bind('App\Repositories\HourRepositoryInterface', 'App\Repositories\HourRepository');
-        // $this->app->bind(HourServiceInterface::class, Hourservice::class);
-        // $this->app->bind(HourRepositoryInterface::class, HourRepository::class);
+        $this->app->bind('App\Models\Year');
+        $this->app->bind('App\Models\Month');
+        
+        
     }
 
     /**
