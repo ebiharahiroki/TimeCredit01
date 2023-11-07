@@ -30,7 +30,7 @@ class HourServiceTest extends TestCase
     {
         parent::setUp();
         $yearInstance = app()->make(Year::class);
-        $this->year = $yearInstance->year($this->year);
+        // $year = $yearInstance->$year;
         $mock = $this->mock(HourRepository::class, function (MockInterface $mock) {
             $mock->shouldReceive('getIndex')->once()->andReturn('hours');
             $mock->shouldReceive('getHours')->once()->andReturn('hours');
