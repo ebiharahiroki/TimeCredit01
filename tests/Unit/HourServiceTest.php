@@ -11,17 +11,14 @@ use Tests\TestCase;
 
 class HourServiceTest extends TestCase
 {
-    private $year;
+    private $years;
     private $month;
     private $hourRepository;
     private $hourService;
 
-    // public function __construct(Year $year, Month $month, HourRepository $hourRepo, HourService $hourService)
+    // public function __construct(Year $year)
     // {
-    //     $this->year = $year;
-    //     $this->month = $month;
-    //     $this->hourRepository = $hourRepo;
-    //     $this->hourService = $hourService;
+    //     $this->years = $year;
     // }
     /**
      * A basic unit test example.
@@ -31,6 +28,7 @@ class HourServiceTest extends TestCase
         parent::setUp();
         
         $yearInstance = new Year();
+        // $year = $this->years->year($year);
         // $yearInstance = app()->make(Year::class);
         $this->year = $yearInstance->year;
         $mock = $this->mock(HourRepository::class, function (MockInterface $mock) {
