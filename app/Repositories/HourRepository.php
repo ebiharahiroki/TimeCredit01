@@ -38,7 +38,7 @@ class HourRepository implements HourRepositoryInterface
 
         return $exist;
     }
-    
+
     public function getHour(Hour $hour)
     {
         $hour = $hour->get();

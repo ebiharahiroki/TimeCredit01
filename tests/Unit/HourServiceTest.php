@@ -11,26 +11,25 @@ use Tests\TestCase;
 
 class HourServiceTest extends TestCase
 {
-    private $years;
+    private $year;
+
     private $month;
+
     private $hourRepository;
+
     private $hourService;
 
-    // public function __construct(Year $year)
-    // {
-    //     $this->years = $year;
-    // }
     /**
      * A basic unit test example.
      */
     public function setUp(): void
     {
         parent::setUp();
-        
+
         $yearInstance = new Year();
-        // $year = $this->years->year($year);
-        // $yearInstance = app()->make(Year::class);
-        $this->year = $yearInstance->year;
+        $monthInstance = new Month();
+        $this->year = $yearInstance;
+        $this->month = $monthInstance;
         $mock = $this->mock(HourRepository::class, function (MockInterface $mock) {
             $mock->shouldReceive('getIndex')->once()->andReturn('hours');
             $mock->shouldReceive('getHours')->once()->andReturn('hours');
@@ -43,12 +42,11 @@ class HourServiceTest extends TestCase
         $hourRepository = app()->make(HourRepository::class);
         $this->instance(HourRepository::class, $hourRepository);
         $hourService = app()->make(HourService::class);
-        // $month = app()->make(Month::class);
         $instanse = $hourService->getIndex();
-        $years = $hourService->deliverYear($this->year);
-        $months = $hourService->deliverMonth($this->month);
+        $years = $hourService->deliverYear($yearInstance);
+        $months = $hourService->deliverMonth($monthInstance);
     }
-    
+
     // (\Mockery::on(function($actual) use ($year) {
     //                             $this->assertInstanceOf(Year::class, $actual);
     //                             $this->assertEquals($year, $actual);
@@ -63,6 +61,8 @@ class HourServiceTest extends TestCase
 
     public function test_getIndex_Hourクラスのインスタンスか()
     {
+        $hourService = app()->make(HourService::class);
+        $instanse = $hourService->getIndex();
         $this->assertContainsOnlyInstancesOf(Hour::class, $instanse);
     }
 
