@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Http\Requests\HourRequest;
 use App\Models\Month;
 use App\Models\Year;
+use App\Models\Hour;
 use App\Repositories\HourRepositoryInterface as HourRepository;
 
 class HourService implements HourServiceInterface
@@ -18,16 +19,14 @@ class HourService implements HourServiceInterface
 
     public function getIndex()
     {
-        $hours = $this->hourRepository->getHours();
-
-        return $hours;
+        return $this->hourRepository->getHours();
     }
 
     public function deliverYear(Year $year)
     {
-        $year = $this->hourRepository->getYear($year);
+        // $year = $this->hourRepository->getYear($year);
 
-        return $year;
+        return $this->hourRepository->getYear($year);
     }
 
     public function deliverMonth(Month $month)
@@ -56,5 +55,10 @@ class HourService implements HourServiceInterface
         }
 
         return $input;
+    }
+    
+    public function deliverShow(Hour $hour)
+    {
+        return $this->hourRepository->getShow($hour);
     }
 }

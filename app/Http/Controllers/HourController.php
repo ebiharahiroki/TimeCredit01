@@ -44,6 +44,8 @@ class HourController extends Controller
 
     public function show(Hour $hour)
     {
+        $hour = $this->hourService->deliverShow($hour);
+        
         return view('hours.show')->with(['hour' => $hour]);
     }
 

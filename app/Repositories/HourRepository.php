@@ -12,16 +12,14 @@ class HourRepository implements HourRepositoryInterface
 {
     public function getHours()
     {
-        $hours = Auth::user()->hours()->orderBy('month_id', 'ASC')->get();
-
-        return $hours;
+        return Auth::user()->hours()->orderBy('month_id', 'ASC')->get();
     }
 
     public function getYear(Year $year)
     {
-        $years = $year->get();
+        // $years = $year->get();
 
-        return $years;
+        return $year->get();
     }
 
     public function getMonth(Month $month)
@@ -39,10 +37,8 @@ class HourRepository implements HourRepositoryInterface
         return $exist;
     }
 
-    public function getHour(Hour $hour)
+    public function getShow(Hour $hour)
     {
-        $hour = $hour->get();
-
-        return $months;
+        return $hour;
     }
 }

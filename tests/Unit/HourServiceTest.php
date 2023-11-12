@@ -47,12 +47,6 @@ class HourServiceTest extends TestCase
         $months = $hourService->deliverMonth($monthInstance);
     }
 
-    // (\Mockery::on(function($actual) use ($year) {
-    //                             $this->assertInstanceOf(Year::class, $actual);
-    //                             $this->assertEquals($year, $actual);
-    //                             return true;
-    //                         }))
-
     public function tearDown(): void
     {
         \Mockery::close();
