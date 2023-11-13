@@ -24,19 +24,15 @@ class HourService implements HourServiceInterface
 
     public function deliverYear(Year $year)
     {
-        // $year = $this->hourRepository->getYear($year);
-
         return $this->hourRepository->getYear($year);
     }
 
     public function deliverMonth(Month $month)
     {
-        $month = $this->hourRepository->getMonth($month);
-
-        return $month;
+        return $this->hourRepository->getMonth($month);;
     }
 
-    public function getForm(HourRequest $request)
+    public function getForm(HourRequest $request, Hour $hour)
     {
         $year_id = $this->hourRepository->getMonth_Id($request);
 
@@ -53,8 +49,8 @@ class HourService implements HourServiceInterface
         if (is_float(['amount'])) {
             ceil(float['amount']);
         }
-
-        return $input;
+        
+        $hour->fill($input)->save();
     }
     
     public function deliverShow(Hour $hour)

@@ -15,7 +15,7 @@ interface HourServiceInterface
 
     public function deliverMonth(Month $month);
 
-    public function getForm(HourRequest $request);
+    public function getForm(HourRequest $request, Hour $hour);
     
     public function deliverShow(Hour $hour);
     

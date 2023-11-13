@@ -34,9 +34,7 @@ class HourController extends Controller
 
     public function store(HourRequest $request, Hour $hour)
     {
-        $hours = $this->hourService->getForm($request);
-
-        $hour->fill($hours)->save();
+        $this->hourService->getForm($request, $hour);
 
         return redirect('/');
     }
