@@ -18,4 +18,8 @@ interface HourRepositoryInterface
     public function getMonth_Id(HourRequest $request);
     
     public function getShow(Hour $hour);
+    
+    public function getChartMonth();
+    
+    public function getchartData();
 }

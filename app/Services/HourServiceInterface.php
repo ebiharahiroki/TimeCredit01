@@ -18,4 +18,6 @@ interface HourServiceInterface
     public function getForm(HourRequest $request);
     
     public function deliverShow(Hour $hour);
+    
+    public function deliverData();
 }

@@ -19,18 +19,17 @@ class HourController extends Controller
 
     public function index()
     {
-        $list = $this->hourService->getIndex();
+        $hours = $this->hourService->getIndex();
 
-        return view('hours.index')->with(['hours' => $list]);
+        return view('hours.index', compact('hours'));
     }
 
     public function create(Year $year, Month $month)
     {
-        $year = $this->hourService->deliverYear($year);
-        $month = $this->hourService->deliverMonth($month);
+        $years = $this->hourService->deliverYear($year);
+        $months = $this->hourService->deliverMonth($month);
 
-        return view('hours.create')->with(['years' => $year])
-                                   ->with(['months' => $month]);
+        return view('hours.create', compact('years'), compact('months'));
     }
 
     public function store(HourRequest $request, Hour $hour)
@@ -46,7 +45,7 @@ class HourController extends Controller
     {
         $hour = $this->hourService->deliverShow($hour);
         
-        return view('hours.show')->with(['hour' => $hour]);
+        return view('hours.show', compact('hour'));
     }
 
     public function edit(Hour $hour)

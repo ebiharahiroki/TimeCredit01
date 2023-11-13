@@ -41,4 +41,14 @@ class HourRepository implements HourRepositoryInterface
     {
         return $hour;
     }
+    
+    public function getChartMonth()
+    {
+        return Hour::where('year_id', '1')->orderBy('month_id', 'ASC')->pluck('month_id')->toArray();
+    }
+    
+    public function getchartData()
+    {
+        return Auth::user()->hours()->where('year_id', '1')->orderBy('month_id', 'ASC')->pluck('amount')->toArray();
+    }
 }

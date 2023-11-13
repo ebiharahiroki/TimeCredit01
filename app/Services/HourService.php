@@ -61,4 +61,22 @@ class HourService implements HourServiceInterface
     {
         return $this->hourRepository->getShow($hour);
     }
+    
+    public function deliverData()
+    {
+        $month = $this->hourRepository->getChartMonth();
+        $data = $this->hourRepository->getchartData();
+        
+        $chartArray = [];
+
+        for ($i = 1; $i < 13; $i++) {
+            if (in_array($i, $month)) {
+                $chartArrayarray["$i 月"] = array_shift($data);
+            } else {
+                $chartArrayarray["$i 月"] = 0;
+            }
+        }
+        
+        return $chartArrayarray;
+    }
 }
