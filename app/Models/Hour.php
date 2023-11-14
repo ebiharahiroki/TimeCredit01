@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
 
 class Hour extends Model
 {
@@ -39,8 +38,8 @@ class Hour extends Model
         return $this->belongsTo(Year::class);
     }
 
-     public function month()
-     {
-         return $this->belongsTo(Month::class);
-     }
+    public function month()
+    {
+        return $this->belongsTo(Month::class);
+    }
 }

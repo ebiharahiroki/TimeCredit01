@@ -77,11 +77,9 @@
                         @csrf
                         <div class="mx-auto max-w-lg ">
                             <div class="py-1">
-                                <span class="px-1 font-sans font-bold text-gray-600">Year</span>
                                 <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->year->year }}</span>
                             </div>
-                            <div class="py-1">
-                                <span class="px-1 font-sans font-bold text-gray-600">Month</span>
+                            <div class="py-2">
                                 <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->month->month }}</span>
                             </div>
                             <div class="py-1">

@@ -80,11 +80,9 @@
                     @method('PUT')
                     <div class="mx-auto max-w-lg ">
                         <div class="Year">
-                            <span class="px-1 font-sans font-bold text-gray-600">Year</span>
                             <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md">{{ $hour->year->year }}</span>
                         </div>
-                        <div class="Month">
-                            <span class="px-1 font-sans font-bold text-gray-600">Month</span>
+                        <div class="Month py-2">
                             <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md">{{ $hour->month->month }}</span>
                         </div>
                         <div class="target_value py-1">
