@@ -17,8 +17,6 @@ class HourRepository implements HourRepositoryInterface
 
     public function getYear(Year $year)
     {
-        // $years = $year->get();
-
         return $year->get();
     }
 
@@ -32,9 +30,9 @@ class HourRepository implements HourRepositoryInterface
     public function getMonth_Id(HourRequest $request)
     {
         $input = $request['hour'];
-        $exist = Hour::where('month_id', $input['month_id'])->whereNull('deleted_at')->exists();
-
-        return $exist;
+        // $exist = Hour::where('month_id', $input['month_id'])->whereNull('deleted_at')->exists();
+        
+        return Auth::user()->hours()->where('month_id', $input['month_id'])->whereNull('deleted_at')->exists();
     }
 
     public function getShow(Hour $hour)
