@@ -75,12 +75,12 @@ class HourService implements HourServiceInterface
 
         for ($i = 1; $i < 13; $i++) {
             if (in_array($i, $month)) {
-                $chartArrayarray["$i 月"] = array_shift($data);
+                $chartArray["$i 月"] = array_shift($data);
             } else {
-                $chartArrayarray["$i 月"] = 0;
+                $chartArray["$i 月"] = 0;
             }
         }
         
-        return $chartArrayarray;
+        return $chartArray;
     }
 }
