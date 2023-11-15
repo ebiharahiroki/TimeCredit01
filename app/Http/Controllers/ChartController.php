@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hour;
-use Illuminate\Support\Facades\Auth;
 use App\Services\HourService;
 
 class ChartController extends Controller
@@ -14,7 +12,7 @@ class ChartController extends Controller
     {
         $this->hourService = $hourService;
     }
-    
+
     public function chart()
     {
         $array = $this->hourService->deliverData();

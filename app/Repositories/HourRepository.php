@@ -30,7 +30,7 @@ class HourRepository implements HourRepositoryInterface
     public function getMonth_Id(HourRequest $request)
     {
         $input = $request['hour'];
-        
+
         return Auth::user()->hours()->where('month_id', $input['month_id'])->whereNull('deleted_at')->exists();
     }
 
@@ -38,14 +38,14 @@ class HourRepository implements HourRepositoryInterface
     {
         return $hour;
     }
-    
+
     public function getChartMonth()
     {
-        return Hour::where('year_id', '1')->orderBy('month_id', 'ASC')->pluck('month_id')->toArray();
+        return Auth::user()->hours()->orderBy('month_id', 'ASC')->pluck('month_id')->toArray();
     }
-    
-    public function getchartData()
+
+    public function getChartData()
     {
-        return Auth::user()->hours()->where('year_id', '1')->orderBy('month_id', 'ASC')->pluck('amount')->toArray();
+        return Auth::user()->hours()->orderBy('month_id', 'ASC')->pluck('amount')->toArray();
     }
 }
