@@ -53,12 +53,14 @@ class HourController extends Controller
 
     public function update(HourRequest $request, Hour $hour)
     {
-        $input = $request['hour'];
-        $input += ['user_id' => $request->user()->id];
-        $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
-                                 + $input['phone_cost'] + $input['other_cost']];
-        $input += ['amount' => ($input['income'] - $input['total_cost']) / $input['hourly_wage']];
-        $hour->fill($input)->save();
+        // $input = $request['hour'];
+        // $input += ['user_id' => $request->user()->id];
+        // $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
+        //                          + $input['phone_cost'] + $input['other_cost']];
+        // $input += ['amount' => ($input['income'] - $input['total_cost']) / $input['hourly_wage']];
+        // $hour->fill($input)->save();
+
+        $this->hourService->updateForm($request, $hour);
 
         return redirect('/hours/'.$hour->id);
     }
