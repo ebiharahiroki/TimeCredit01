@@ -55,6 +55,17 @@ class HourService implements HourServiceInterface
         return $this->hourRepository->getShow($hour);
     }
     
+    public function updateForm(HourRequest $request, Hour $hour)
+    {
+        $input = $request['hour'];
+        $input += ['user_id' => $request->user()->id];
+        $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
+                                                                        + $input['phone_cost'] + $input['other_cost']];
+        $amount = ($input['income'] - $input['total_cost']) / $input['hourly_wage'];
+        $input += ['amount' => ceil($amount)];
+        $hour->fill($input)->save();
+    }
+    
     public function deliverData()
     {
         $month = $this->hourRepository->getChartMonth();
