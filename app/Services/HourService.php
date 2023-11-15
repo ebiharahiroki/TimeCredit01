@@ -36,7 +36,7 @@ class HourService implements HourServiceInterface
     {
         $year_id = $this->hourRepository->getMonth_Id($request);
 
-        if ($year_id == true) {
+        if ($year_id) {
             return redirect('/hours/create');
         }
 
