@@ -45,9 +45,9 @@ class HourService implements HourServiceInterface
         $input += ['user_id' => $request->user()->id];
         $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
                                                                          + $input['phone_cost'] + $input['other_cost']];
-        $input += ['amount' => ($input['income'] - $input['total_cost']) / $input['hourly_wage']];
-        $intInput = ceil($input);
-        $hour->fill($intInput)->save();
+        $input += ['amount' => ceil($input['income'] - $input['total_cost']) / $input['hourly_wage']];
+        // $intInput = ceil($input['amount']);
+        $hour->fill($input)->save();
     }
     
     public function deliverShow(Hour $hour)
