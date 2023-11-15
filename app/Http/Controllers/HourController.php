@@ -7,14 +7,17 @@ use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
 use App\Services\HourService;
+use App\Repositories\HourRepositoryInterface as HourRepository;
 
 class HourController extends Controller
 {
     private $hourService;
+    private $hourRepository;
 
-    public function __construct(hourService $hourService)
+    public function __construct(hourService $hourService, HourRepository $hourRepo)
     {
         $this->hourService = $hourService;
+        $this->hourRepository = $hourRepo;
     }
 
     public function index()
@@ -34,6 +37,12 @@ class HourController extends Controller
 
     public function store(HourRequest $request, Hour $hour)
     {
+        $month_id = $this->hourRepository->getMonth_Id($request);
+        
+        if ($month_id) {
+            return redirect('/hours/create');
+        }
+        
         $this->hourService->getForm($request, $hour);
 
         return redirect('/');
