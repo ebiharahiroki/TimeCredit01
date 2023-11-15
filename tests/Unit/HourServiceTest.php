@@ -2,8 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\Models\Month;
-use App\Models\Year;
 use App\Repositories\HourRepository;
 use App\Services\HourService;
 use Mockery\MockInterface;

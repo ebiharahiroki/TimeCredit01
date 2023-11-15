@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Http\Requests\HourRequest;
+use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
-use App\Models\Hour;
 use App\Repositories\HourRepositoryInterface as HourRepository;
 
 class HourService implements HourServiceInterface
@@ -29,7 +29,7 @@ class HourService implements HourServiceInterface
 
     public function deliverMonth(Month $month)
     {
-        return $this->hourRepository->getMonth($month);;
+        return $this->hourRepository->getMonth($month);
     }
 
     public function getForm(HourRequest $request, Hour $hour)
@@ -49,12 +49,12 @@ class HourService implements HourServiceInterface
         $input += ['amount' => ceil($amount)];
         $hour->fill($input)->save();
     }
-    
+
     public function deliverShow(Hour $hour)
     {
         return $this->hourRepository->getShow($hour);
     }
-    
+
     public function updateForm(HourRequest $request, Hour $hour)
     {
         $input = $request['hour'];
@@ -65,12 +65,12 @@ class HourService implements HourServiceInterface
         $input += ['amount' => ceil($amount)];
         $hour->fill($input)->save();
     }
-    
+
     public function deliverData()
     {
         $month = $this->hourRepository->getChartMonth();
-        $data = $this->hourRepository->getchartData();
-        
+        $data = $this->hourRepository->getChartData();
+
         $chartArray = [];
 
         for ($i = 1; $i < 13; $i++) {
@@ -80,7 +80,7 @@ class HourService implements HourServiceInterface
                 $chartArray["$i 月"] = 0;
             }
         }
-        
+
         return $chartArray;
     }
 }
