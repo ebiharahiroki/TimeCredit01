@@ -30,7 +30,7 @@ class HourRepository implements HourRepositoryInterface
     public function getMonth_Id(HourRequest $request)
     {
         $input = $request['hour'];
-
+        
         return Auth::user()->hours()->where('month_id', $input['month_id'])->whereNull('deleted_at')->exists();
     }
 

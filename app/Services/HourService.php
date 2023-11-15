@@ -7,6 +7,7 @@ use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
 use App\Repositories\HourRepositoryInterface as HourRepository;
+use Illuminate\Support\Facades\Auth;
 
 class HourService implements HourServiceInterface
 {
@@ -34,14 +35,8 @@ class HourService implements HourServiceInterface
 
     public function getForm(HourRequest $request, Hour $hour)
     {
-        $year_id = $this->hourRepository->getMonth_Id($request);
-
-        if ($year_id) {
-            return redirect('/hours/create');
-        }
-
         $input = $request['hour'];
-
+        
         $input += ['user_id' => $request->user()->id];
         $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
                                                                          + $input['phone_cost'] + $input['other_cost']];
