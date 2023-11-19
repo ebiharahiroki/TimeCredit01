@@ -10,7 +10,8 @@
                     </thead>
                     <tbody class="border-t border-gray-100">
                         <tr>
-                          　<td class="px-6 pb-9 pt-20 text-gray-600">
+                          　<td class="px-6 pb-9 pt-12 text-gray-600">
+                                <h1 class="text-center font-sans font-bold text-2xl text-gray-500 pb-8">働かずに自由に使えた時間</h1>
                                 <div class="flex items-center justify-center font-sans font-bold text-gray-900 pt-26">
                                     <div class="w-2/3">
                                         <canvas id="chart"/>
@@ -22,7 +23,7 @@
                                             type: 'bar',
                                             data: {
                                                 datasets: [{
-                                                    label: '働かずに自由に使えた時間',
+                                                    label: '自由に使えた時間',
                                                     data: @json($array),
                                                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                                                     borderColor: 'rgba(75, 192, 192, 1)',
