@@ -30,9 +30,9 @@
 
 ##  データ構成
 <b>「テーブル構成・リレーション」：</b><br>
-<img src="https://github.com/ebiharahiroki/TimeCredit01/assets/132234565/5e6abab2-18c1-4b73-9c27-9fd0bab73398" width="225">
+<img src="https://github.com/ebiharahiroki/TimeCredit01/assets/132234565/b7c75c66-f7e9-44d8-b8c8-6bfd0183ddaa" width="225">
 <br><b>各テーブル詳細：</b><br>
-<img src="https://github.com/ebiharahiroki/TimeCredit01/assets/132234565/7c718d55-7136-4869-8923-7a5618e2c9cf" width="225">
+<img src="https://github.com/ebiharahiroki/TimeCredit01/assets/132234565/460b844f-ae94-4dd5-865c-2c80652e8513" width="225">
 
 ##  linter
 Pintを定期的に実行して、コードスタイルの問題を修正しています。<br>

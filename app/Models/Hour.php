@@ -18,7 +18,7 @@ class Hour extends Model
         'target_value',
         'rent',
         'water_cost',
-        'utilitiy_cost',
+        'utility_cost',
         'food_cost',
         'phone_cost',
         'other_cost',

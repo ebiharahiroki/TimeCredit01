@@ -12,9 +12,9 @@ class HourService implements HourServiceInterface
 {
     private $hourRepository;
 
-    public function __construct(HourRepository $hourRepo)
+    public function __construct(HourRepository $hourRepository)
     {
-        $this->hourRepository = $hourRepo;
+        $this->hourRepository = $hourRepository;
     }
 
     public function getIndex()
@@ -35,9 +35,9 @@ class HourService implements HourServiceInterface
     public function getForm(HourRequest $request, Hour $hour)
     {
         $input = $request['hour'];
-
+        
         $input += ['user_id' => $request->user()->id];
-        $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
+        $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utility_cost'] + $input['food_cost']
                                                                          + $input['phone_cost'] + $input['other_cost']];
         $amount = ($input['income'] - $input['total_cost']) / $input['hourly_wage'];
         $input += ['amount' => ceil($amount)];
@@ -53,7 +53,7 @@ class HourService implements HourServiceInterface
     {
         $input = $request['hour'];
         $input += ['user_id' => $request->user()->id];
-        $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utilitiy_cost'] + $input['food_cost']
+        $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utility_cost'] + $input['food_cost']
                                                                         + $input['phone_cost'] + $input['other_cost']];
         $amount = ($input['income'] - $input['total_cost']) / $input['hourly_wage'];
         $input += ['amount' => ceil($amount)];
