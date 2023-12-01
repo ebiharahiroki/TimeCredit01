@@ -3,22 +3,22 @@
 namespace Tests\Unit;
 
 use App\Repositories\HourRepository;
+// use App\Repositories\HourRepositoryInterface as HourRepository;
 use App\Services\HourService;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+// use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Mockery\MockInterface;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\User;
+use App\Http\Requests\HourRequest;
+use App\Models\Hour;
 
 
 class HourServiceTest extends TestCase
 {
-    use DatabaseMigrations;
+    use RefreshDatabase;
     
-    private $hourRepository;
-
-    // private $hourService;
-
     /**
      * A basic unit test example.
      */
@@ -35,7 +35,7 @@ class HourServiceTest extends TestCase
         // $this->instance(HourRepository::class, $hourRepository);
         // $hourService = app()->make(HourService::class);
         
-        Artisan::call('db:seed');
+        Artisan::call('migrate:fresh');
     }
 
     public function tearDown(): void
@@ -46,10 +46,9 @@ class HourServiceTest extends TestCase
     
     public function test_保存()
     {
-        $user = User::factory()->create();
-        
-        $request = [
-            'user_id' => $user->id,
+        $request = new HourRequest();
+        $request->merge([
+            'user_id' => '1',
             'month_id' => '1',
             'year_id' => '1',
             'target_value' => '50',
@@ -61,13 +60,15 @@ class HourServiceTest extends TestCase
             'other_cost' => '200000',
             'income' => '200000',
             'hourly_wage' => '2000',
-        ];
+        ]);
 
-        $hourService = new HourService($this->hourRepository);
+        $hour = new Hour();
+        $hourRepository = app()->make(HourRepository::class);
+        $hourService = new HourService($hourRepository);
         $result = $hourService->getForm($request, $hour);
  
         $this->assertDatabaseHas('hours', [
-            'user_id' => $user->id,
+            'user_id' => '1',
             'month_id' => '1',
             'year_id' => '1',
             'target_value' => '50',
