@@ -7,6 +7,7 @@ use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
 use App\Repositories\HourRepositoryInterface as HourRepository;
+use App\Services\GetFormRequest;
 
 class HourService implements HourServiceInterface
 {
@@ -32,15 +33,16 @@ class HourService implements HourServiceInterface
         return $this->hourRepository->getMonth($month);
     }
 
-    public function getForm(HourRequest $request, Hour $hour)
+    public function getForm(GetFormRequest $getFormRequest)
     {
-        $input = $request['hour'];
-        
-        $input += ['user_id' => $request->user()->id];
-        $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utility_cost'] + $input['food_cost']
-                                                                         + $input['phone_cost'] + $input['other_cost']];
-        $amount = ($input['income'] - $input['total_cost']) / $input['hourly_wage'];
-        $input += ['amount' => ceil($amount)];
+        $input = $getFormRequest->getUserId();
+        dd($input);
+        $input += $getFormRequest->getRent() + $getFormRequest->getWaterCost()
+                                + $getFormRequest->getUtilityCost() + $getFormRequest->getFoodCost()
+                             + $getFormRequest->getPhoneCost() + $getFormRequest->getOtherCost();
+                             dd($input);
+        $amount = ($getFormRequest->getIncome() - $getFormRequest->getTotalCost()) / $getFormRequest->getHourlyWage();
+        $input += $getFormRequest->amount = ceil($amount);
         $hour->fill($input)->save();
     }
 

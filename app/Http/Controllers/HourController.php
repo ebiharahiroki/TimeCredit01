@@ -8,6 +8,7 @@ use App\Models\Month;
 use App\Models\Year;
 use App\Repositories\HourRepositoryInterface as HourRepository;
 use App\Services\HourService;
+use App\Services\GetFormRequest;
 
 class HourController extends Controller
 {
@@ -36,7 +37,7 @@ class HourController extends Controller
         return view('hours.create', compact('years'), compact('months'));
     }
 
-    public function store(HourRequest $request, Hour $hour)
+    public function store(GetFormRequest $getFormRequest, HourRequest $request, Hour $hour)
     {
         $month_id = $this->hourRepository->getMonth_Id($request);
 
@@ -44,7 +45,7 @@ class HourController extends Controller
             return redirect('/hours/create');
         }
 
-        $this->hourService->getForm($request, $hour);
+        $this->hourService->getForm($getFormRequest);
 
         return redirect('/');
     }
