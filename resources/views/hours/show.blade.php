@@ -84,7 +84,7 @@
                             </div>
                             <div class="py-1">
                                 <span class="px-1 font-sans font-bold text-gray-600">＋αで欲しい自由時間</span>
-                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->target_value }}時間</span>
+                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->targetValue }}時間</span>
                             </div>
                             
                             <div class="py-1">
@@ -94,27 +94,27 @@
                             
                             <div class="py-1">
                                 <span class="px-1 font-sans font-bold text-gray-600">水道代</span>
-                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->water_cost }}円</span>
+                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->waterCost }}円</span>
                             </div>
                             
                             <div class="py-1">
                                 <span class="px-1 font-sans font-bold text-gray-600">光熱費</span>
-                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->utility_cost }}円</span>
+                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->utilityCost }}円</span>
                             </div>
                             
                             <div class="py-1">
                                 <span class="px-1 font-sans font-bold text-gray-600">食費</span>
-                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->food_cost }}円</span>
+                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->foodCost }}円</span>
                             </div>
                             
                             <div class="py-1">
                                 <span class="px-1 font-sans font-bold text-gray-600">通信費</span>
-                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->phone_cost }}円</span>
+                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->phoneCost }}円</span>
                             </div>
                             
                             <div class="py-1">
                                 <span class="px-1 font-sans font-bold text-gray-600">その他</span>
-                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->other_cost }}円</span>
+                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->otherCost }}円</span>
                             </div>
                             
                             <div class="py-1">
@@ -124,7 +124,7 @@
                             
                             <div class="py-1">
                                 <span class="px-1 font-sans font-bold text-gray-600">時給</span>
-                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->hourly_wage }}円</span>
+                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->hourlyWage }}円</span>
                             </div>
                             <div class="py-1">
                                 <span class="px-1 font-sans font-bold text-gray-600">自由に使えた時間</span>

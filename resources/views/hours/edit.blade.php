@@ -85,11 +85,11 @@
                         <div class="Month py-2">
                             <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md">{{ $hour->month->month }}</span>
                         </div>
-                        <div class="target_value py-1">
+                        <div class="targetValue py-1">
                             <span class="px-1 font-sans font-bold text-gray-600">欲しい自由時間</span>
-                            <input placeholder="欲しい自由時間" type="text" name="hour[target_value]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md y-600 focus:border-gray-600" value="{{ $hour->target_value }}"/>
-                            <p class="target_value" style="color:red">
-                                {{ $errors->first('hour.target_value') }}
+                            <input placeholder="欲しい自由時間" type="text" name="hour[targetValue]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md y-600 focus:border-gray-600" value="{{ $hour->targetValue }}"/>
+                            <p class="targetValue" style="color:red">
+                                {{ $errors->first('hour.targetValue') }}
                             </p>
                         </div>
                         
@@ -103,41 +103,41 @@
                         
                         <div class="py-1">
                             <span class="px-1 font-sans font-bold text-gray-600">水道代</span>
-                            <input placeholder="水道代" type="text" x-model="water_cost" name="hour[water_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->water_cost }}"/>
-                            <p class="water_cost__error" style="color:red">
-                                {{ $errors->first('hour.water_cost') }}
+                            <input placeholder="水道代" type="text" x-model="waterCost" name="hour[waterCost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->waterCost }}"/>
+                            <p class="waterCost__error" style="color:red">
+                                {{ $errors->first('hour.waterCost') }}
                             </p>
                         </div>
                         
                         <div class="py-1">
                             <span class="px-1 font-sans font-bold text-gray-600">光熱費</span>
-                            <input placeholder="光熱費" type="text" x-model="utility_cost" name="hour[utility_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->utility_cost }}"/>
-                            <p class="utility_cost__error" style="color:red">
-                                {{ $errors->first('hour.utility_cost') }}
+                            <input placeholder="光熱費" type="text" x-model="utilityCost" name="hour[utilityCost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->utilityCost }}"/>
+                            <p class="utilityCost__error" style="color:red">
+                                {{ $errors->first('hour.utilityCost') }}
                             </p>
                         </div>
                         
                         <div class="py-1">
                             <span class="px-1 font-sans font-bold text-gray-600">食費</span>
-                            <input placeholder="食費" type="text" x-model="food_cost" name="hour[food_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->food_cost }}"/>
-                            <p class="food_cost__error" style="color:red">
-                                {{ $errors->first('hour.food_cost') }}
+                            <input placeholder="食費" type="text" x-model="foodCost" name="hour[foodCost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->foodCost }}"/>
+                            <p class="foodCost__error" style="color:red">
+                                {{ $errors->first('hour.foodCost') }}
                             </p>
                         </div>
                         
                         <div class="py-1">
                             <span class="px-1 font-sans font-bold text-gray-600">通信費</span>
-                            <input placeholder="通信費" type="text" x-model="phone_cost" name="hour[phone_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->phone_cost }}"/>
-                            <p class="phone_cost__error" style="color:red">
-                                {{ $errors->first('hour.phone_hour') }}
+                            <input placeholder="通信費" type="text" x-model="phoneCost" name="hour[phoneCost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->phoneCost }}"/>
+                            <p class="phoneCost__error" style="color:red">
+                                {{ $errors->first('hour.phoneCost') }}
                             </p>
                         </div>
                         
                         <div class="py-1">
                             <span class="px-1 font-sans font-bold text-gray-600">その他</span>
-                            <input placeholder="その他" type="text" x-model="other_cost" name="hour[other_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->other_cost }}"/>
-                            <p class="other_cost__error" style="color:red">
-                                {{ $errors->first('hour.other_cost') }}
+                            <input placeholder="その他" type="text" x-model="otherCost" name="hour[otherCost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->otherCost }}"/>
+                            <p class="otherCost__error" style="color:red">
+                                {{ $errors->first('hour.otherCost') }}
                             </p>
                         </div>
                         
@@ -151,11 +151,11 @@
                         
                         <div class="py-1">
                             <span class="px-1 font-sans font-bold text-gray-600">時給</span>
-                            <input placeholder="時給" type="text" x-model="hourly_wage" name="hour[hourly_wage]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->hourly_wage }}"/>
+                            <input placeholder="時給" type="text" x-model="hourlyWage" name="hour[hourlyWage]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->hourlyWage }}"/>
                         </div>
                         <input type="submit" value="更新" class="mt-3 text-lg font-semibold bg-gray-800 w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:text-white hover:bg-black cursor-pointer"/>
-                        <p class="hourly_wage__error" style="color:red">
-                                {{ $errors->first('hour.hourly_wage') }}
+                        <p class="hourlyWage__error" style="color:red">
+                                {{ $errors->first('hour.hourlyWage') }}
                         </p>
                     </div>
                 </form>

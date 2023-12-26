@@ -39,9 +39,10 @@ class HourController extends Controller
 
     public function store(GetFormRequest $getFormRequest, HourRequest $request, Hour $hour)
     {
-        $month_id = $this->hourRepository->getMonth_Id($request);
+        $monthId = $this->hourRepository->getMonthId($request);
+        dd($monthid);
 
-        if ($month_id) {
+        if ($monthId) {
             return redirect('/hours/create');
         }
 

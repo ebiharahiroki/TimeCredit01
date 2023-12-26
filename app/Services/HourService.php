@@ -35,12 +35,12 @@ class HourService implements HourServiceInterface
 
     public function getForm(GetFormRequest $getFormRequest)
     {
+        $getFormRequest = new GetFormRequest($user_id, $year_id, $month_id, $target_value, $rent, $water_cost, 
+        $utility_cost, $food_cost, $phone_cost, $other_cost, $total_cost, $income, $hourly_wage, $amount);
         $input = $getFormRequest->getUserId();
-        dd($input);
         $input += $getFormRequest->getRent() + $getFormRequest->getWaterCost()
                                 + $getFormRequest->getUtilityCost() + $getFormRequest->getFoodCost()
                              + $getFormRequest->getPhoneCost() + $getFormRequest->getOtherCost();
-                             dd($input);
         $amount = ($getFormRequest->getIncome() - $getFormRequest->getTotalCost()) / $getFormRequest->getHourlyWage();
         $input += $getFormRequest->amount = ceil($amount);
         $hour->fill($input)->save();

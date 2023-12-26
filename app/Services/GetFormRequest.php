@@ -4,36 +4,52 @@ namespace App\Services;
 
 class GetFormRequest
 {
-    private $userId;
-    private $yearId;
-    private $monthId;
-    private $targetValue;
+    private $user_id;
+    private $year_id;
+    private $month_id;
+    private $target_value;
     private $rent;
-    private $waterCost;
-    private $utilityCost;
-    private $foodCost;
-    private $phoneCost;
-    private $otherCost;
-    private $totalCost;
+    private $water_cost;
+    private $utility_cost;
+    private $food_cost;
+    private $phone_cost;
+    private $other_cost;
+    private $total_cost;
     private $income;
-    private $hourlyWage;
+    private $hourly_wage;
     private $amount;
     
-    public __construct()
+    public function __construct($user_id, $year_id, $month_id, $target_value, $rent, $water_cost, $utility_cost, $food_cost, $phone_cost, $other_cost, $total_cost, $income, $hourly_wage, $amount)
+    {
+        $this->user_id = $user_id;
+        $this->year_id = $year_id;
+        $this->month_id = $month_id;
+        $this->target_value = $target_value;
+        $this->rent = $rent;
+        $this->water_cost = $water_cost;
+        $this->utility_cost = $utility_cost;
+        $this->food_cost = $food_cost;
+        $this->phone_cost = $phone_cost;
+        $this->other_cost = $other_cost;
+        $this->total_cost = $total_cost;
+        $this->income = $income;
+        $this->hourly_wage = $hourly_wage;
+        $this->amount = $amount;
+    }
     
     public function getUserId()
     {
-        return $this->userId;
+        return $this->user_id;
     }
     
     public function getYearId()
     {
-        return $this->yearId;
+        return $this->year_id;
     }
     
     public function getTargetValue()
     {
-        return $this->targetValue;
+        return $this->target_value;
     }
     
     public function getRent()
@@ -43,32 +59,32 @@ class GetFormRequest
     
     public function getWaterCost()
     {
-        return $this->waterCost;
+        return $this->water_cost;
     }
     
     public function getUtilityCost()
     {
-        return $this->utilityCost;
+        return $this->utility_cost;
     }
     
     public function getFoodCost()
     {
-        return $this->foodCost;
+        return $this->food_cost;
     }
     
     public function getPhoneCost()
     {
-        return $this->phoneCost;
+        return $this->phone_cost;
     }
     
     public function getOtherCost()
     {
-        return $this->otherCost;
+        return $this->other_cost;
     }
     
     public function getTotalCost()
     {
-        return $this->totalCost;
+        return $this->total_cost;
     }
     
     public function getIncome()
@@ -78,7 +94,7 @@ class GetFormRequest
     
     public function getHourlyWage()
     {
-        return $this->hourlyWage;
+        return $this->hourly_wage;
     }
     
     public function getAmount()
