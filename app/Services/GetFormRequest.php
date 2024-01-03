@@ -14,12 +14,11 @@ class GetFormRequest
     private $food_cost;
     private $phone_cost;
     private $other_cost;
-    private $total_cost;
     private $income;
     private $hourly_wage;
-    private $amount;
     
-    public function __construct($user_id, $year_id, $month_id, $target_value, $rent, $water_cost, $utility_cost, $food_cost, $phone_cost, $other_cost, $total_cost, $income, $hourly_wage, $amount)
+    public function __construct($user_id, $year_id, $month_id, $target_value, $rent, $water_cost, $utility_cost,
+    $food_cost, $phone_cost, $other_cost, $income, $hourly_wage)
     {
         $this->user_id = $user_id;
         $this->year_id = $year_id;
@@ -31,10 +30,8 @@ class GetFormRequest
         $this->food_cost = $food_cost;
         $this->phone_cost = $phone_cost;
         $this->other_cost = $other_cost;
-        $this->total_cost = $total_cost;
         $this->income = $income;
         $this->hourly_wage = $hourly_wage;
-        $this->amount = $amount;
     }
     
     public function getUserId()
@@ -45,6 +42,11 @@ class GetFormRequest
     public function getYearId()
     {
         return $this->year_id;
+    }
+    
+    public function getMonthId()
+    {
+        return $this->month_id;
     }
     
     public function getTargetValue()
@@ -82,11 +84,6 @@ class GetFormRequest
         return $this->other_cost;
     }
     
-    public function getTotalCost()
-    {
-        return $this->total_cost;
-    }
-    
     public function getIncome()
     {
         return $this->income;
@@ -95,10 +92,5 @@ class GetFormRequest
     public function getHourlyWage()
     {
         return $this->hourly_wage;
-    }
-    
-    public function getAmount()
-    {
-        return $this->amount;
     }
 }

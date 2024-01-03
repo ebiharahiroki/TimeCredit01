@@ -62,10 +62,8 @@ class HourServiceTest extends TestCase
             'hourlywage' => '2000',
         ]);
 
-        $hour = new Hour();
-        $hourRepository = app()->make(HourRepository::class);
-        $hourService = new HourService($hourRepository);
-        $result = $hourService->getForm($request, $hour);
+        $hourService = app()->make(HourService::class);
+        $result = $hourService->getForm($getFormRequest);
  
         $this->assertDatabaseHas('hours', [
             'userid' => '1',
