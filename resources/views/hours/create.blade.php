@@ -95,8 +95,8 @@
                             <input placeholder="欲しい自由時間（全て半角数字入力）" type="text"
                             name="hour[target_value]" class="text-md
                             px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300
-                            placeholder-gray-600 shadow-md focus:border-gray-600
-                            value="{{ old('hour.target_value') }}"/>
+                            placeholder-gray-600 shadow-md focus:border-gray-600"
+                            value="{{ old('hour.target_value__error') }}"/>
                             <p class="target_value" style="color:red">
                                 {{ $errors->first('hour.target_value') }}
                             </p>
@@ -124,12 +124,12 @@
                         
                         <div class="py-1">
                             <input placeholder="光熱費" type="text"
-                            name="hour[utilitiy_cost]" class="text-md px-3 py-2 rounded-lg
+                            name="hour[utility_cost]" class="text-md px-3 py-2 rounded-lg
                             w-full bg-white border-2 border-gray-300 placeholder-gray-600
                             shadow-md focus:border-gray-600"
-                            value="{{ old('hour.utilitiy_cost') }}"/>
-                            <p class="utilitiy_cost__error" style="color:red">
-                                {{ $errors->first('hour.utilitiy_cost') }}
+                            value="{{ old('hour.utility_cost') }}"/>
+                            <p class="utility_cost__error" style="color:red">
+                                {{ $errors->first('hour.utility_cost') }}
                             </p>
                         </div>
                         
@@ -151,7 +151,7 @@
                             shadow-md focus:border-gray-600"
                             value="{{ old('hour.phone_cost') }}"/>
                             <p class="phone_cost__error" style="color:red">
-                                {{ $errors->first('hour.phone_hour') }}
+                                {{ $errors->first('hour.phone_cost') }}
                             </p>
                         </div>
                         

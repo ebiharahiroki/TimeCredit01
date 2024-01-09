@@ -99,7 +99,7 @@
                             
                             <div class="py-1">
                                 <span class="px-1 font-sans font-bold text-gray-600">光熱費</span>
-                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->utilitiy_cost }}円</span>
+                                <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">{{ $hour->utility_cost }}円</span>
                             </div>
                             
                             <div class="py-1">

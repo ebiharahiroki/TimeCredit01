@@ -27,7 +27,7 @@ class HourRepository implements HourRepositoryInterface
         return $months;
     }
 
-    public function getMonth_Id(HourRequest $request)
+    public function getMonthId(HourRequest $request)
     {
         $input = $request['hour'];
 

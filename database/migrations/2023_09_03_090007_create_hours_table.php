@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('target_value');
             $table->integer('rent');
             $table->integer('water_cost');
-            $table->integer('utilitiy_cost');
+            $table->integer('utility_cost');
             $table->integer('food_cost');
             $table->integer('phone_cost');
             $table->integer('other_cost');

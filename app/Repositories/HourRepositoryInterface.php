@@ -15,7 +15,7 @@ interface HourRepositoryInterface
 
     public function getMonth(Month $month);
 
-    public function getMonth_Id(HourRequest $request);
+    public function getMonthId(HourRequest $request);
 
     public function getShow(Hour $hour);
 

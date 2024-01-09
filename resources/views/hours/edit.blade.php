@@ -111,9 +111,9 @@
                         
                         <div class="py-1">
                             <span class="px-1 font-sans font-bold text-gray-600">光熱費</span>
-                            <input placeholder="光熱費" type="text" x-model="utilitiy_cost" name="hour[utilitiy_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->utilitiy_cost }}"/>
-                            <p class="utilitiy_cost__error" style="color:red">
-                                {{ $errors->first('hour.utilitiy_cost') }}
+                            <input placeholder="光熱費" type="text" x-model="utility_cost" name="hour[utility_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->utility_cost }}"/>
+                            <p class="utility_cost__error" style="color:red">
+                                {{ $errors->first('hour.utility_cost') }}
                             </p>
                         </div>
                         
@@ -129,7 +129,7 @@
                             <span class="px-1 font-sans font-bold text-gray-600">通信費</span>
                             <input placeholder="通信費" type="text" x-model="phone_cost" name="hour[phone_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->phone_cost }}"/>
                             <p class="phone_cost__error" style="color:red">
-                                {{ $errors->first('hour.phone_hour') }}
+                                {{ $errors->first('hour.phone_cost') }}
                             </p>
                         </div>
                         
