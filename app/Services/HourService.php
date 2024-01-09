@@ -48,6 +48,7 @@ class HourService implements HourServiceInterface
         $other_cost = $getFormRequest->getOtherCost();
         $income = $getFormRequest->getIncome();
         $hourly_wage = $getFormRequest->getHourlyWage();
+        
         $total_cost = $getFormRequest->getRent() + $getFormRequest->getWaterCost()
                                 + $getFormRequest->getUtilityCost() + $getFormRequest->getFoodCost()
                              + $getFormRequest->getPhoneCost() + $getFormRequest->getOtherCost();
