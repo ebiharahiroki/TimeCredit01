@@ -23,7 +23,7 @@ class HourServiceTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-
+        
         // $mock = $this->mock(HourRepository::class, function (MockInterface $mock) {
             // $mock->shouldReceive('getMonth_id')->once()->with($this->request)->andReturn('exist');
             // $mock->shouldReceive('getForm')->once()->with($this->request, $this->hour);
@@ -33,7 +33,7 @@ class HourServiceTest extends TestCase
         // $this->instance(HourRepository::class, $hourRepository);
         // $hourService = app()->make(HourService::class);
         
-        Artisan::call('migrate:fresh');
+        // Artisan::call('migrate:fresh');
     }
 
     public function tearDown(): void
@@ -44,10 +44,8 @@ class HourServiceTest extends TestCase
     
     public function test_保存()
     {
-        $user = User::factory()->create();
-        
         $request['hour'] = [
-            'user_id' => $user->id,
+            'user_id' => '1',
             'year_id' => '1',
             'month_id' => '1',
             'target_value' => '50',
@@ -75,7 +73,7 @@ class HourServiceTest extends TestCase
         $income = $input['income'];
         $hourly_wage = $input['hourly_wage'];
         
-        $getFormRequest = new GetFormRequest(auth()->id(), $year_id, $month_id, $target_value, $rent, $water_cost, 
+        $getFormRequest = new GetFormRequest($user_id, $year_id, $month_id, $target_value, $rent, $water_cost, 
         $utility_cost, $food_cost, $phone_cost, $other_cost, $income, $hourly_wage);
 
         $hourService = app()->make(HourService::class);

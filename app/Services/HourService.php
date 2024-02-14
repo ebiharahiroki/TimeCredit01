@@ -8,6 +8,7 @@ use App\Models\Month;
 use App\Models\Year;
 use App\Repositories\HourRepositoryInterface as HourRepository;
 use App\Services\GetFormRequest;
+use App\Services\UpdateFormRequest;
 
 class HourService implements HourServiceInterface
 {
@@ -68,15 +69,32 @@ class HourService implements HourServiceInterface
         return $this->hourRepository->getShow($hour);
     }
 
-    public function updateForm(HourRequest $request, Hour $hour)
+    public function updateForm(updateFormRequest $updateFormRequest)
     {
-        $input = $request['hour'];
-        $input += ['user_id' => $request->user()->id];
-        $input += ['total_cost' => $input['rent'] + $input['water_cost'] + $input['utility_cost'] + $input['food_cost']
-                                                                        + $input['phone_cost'] + $input['other_cost']];
-        $amount = ($input['income'] - $input['total_cost']) / $input['hourly_wage'];
-        $input += ['amount' => ceil($amount)];
-        $hour->fill($input)->save();
+        $updateRequest = [];
+        $user_id = $updateFormRequest->getUserId();
+        $target_value = $updateFormRequest->getTargetValue();
+        $rent = $updateFormRequest->getRent();
+        $water_cost = $updateFormRequest->getWaterCost();
+        $utility_cost = $updateFormRequest->getUtilityCost();
+        $food_cost = $updateFormRequest->getFoodCost();
+        $phone_cost = $updateFormRequest->getPhoneCost();
+        $other_cost = $updateFormRequest->getOtherCost();
+        $income = $updateFormRequest->getIncome();
+        $hourly_wage = $updateFormRequest->getHourlyWage();
+        
+        $total_cost = $updateFormRequest->getRent() + $updateFormRequest->getWaterCost()
+                                + $updateFormRequest->getUtilityCost() + $updateFormRequest->getFoodCost()
+                             + $updateFormRequest->getPhoneCost() + $updateFormRequest->getOtherCost();
+        $amount = ($updateFormRequest->getIncome() - $total_cost) / $updateFormRequest->getHourlyWage();
+        $amount += ceil($amount);
+        $updateRequest += array('user_id' => $user_id, 
+        'target_value' => $target_value, 'rent' => $rent, 'water_cost' => $water_cost, 
+        'utility_cost' => $utility_cost, 'food_cost' => $food_cost, 'phone_cost' => $phone_cost, 
+        'other_cost' => $other_cost, 'income' => $income, 'hourly_wage' => $hourly_wage, 'total_cost' => $total_cost, 
+        'amount' => $amount);
+        $hour = new Hour();
+        $hour->create($updateRequest);
     }
 
     public function deliverData()

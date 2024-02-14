@@ -9,6 +9,7 @@ use App\Models\Year;
 use App\Repositories\HourRepositoryInterface as HourRepository;
 use App\Services\HourService;
 use App\Services\GetFormRequest;
+use App\Services\UpdateFormRequest;
 
 class HourController extends Controller
 {
@@ -77,9 +78,26 @@ class HourController extends Controller
         return view('hours.edit')->with(['hour' => $hour]);
     }
 
-    public function update(HourRequest $request, Hour $hour)
+    public function update(HourRequest $request)
     {
-        $this->hourService->updateForm($request, $hour);
+        dd($request);
+        $input = $request['hour'];
+        $year_id = $input['year_id'];
+        $month_id = $input['month_id'];
+        $target_value = $input['target_value'];
+        $rent = $input['rent'];
+        $water_cost = $input['water_cost'];
+        $utility_cost = $input['utility_cost'];
+        $food_cost = $input['food_cost'];
+        $phone_cost = $input['phone_cost'];
+        $other_cost = $input['other_cost'];
+        $income = $input['income'];
+        $hourly_wage = $input['hourly_wage'];
+        
+        $updateFormRequest = new UpdateFormRequest(auth()->id(), $target_value, $rent, $water_cost, 
+        $utility_cost, $food_cost, $phone_cost, $other_cost, $income, $hourly_wage);
+        
+        $this->hourService->updateForm($updateFormRequest);
 
         return redirect('/hours/'.$hour->id);
     }
