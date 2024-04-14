@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
 use App\Http\Requests\HourRequest;
@@ -34,7 +36,7 @@ class HourService implements HourServiceInterface
         return $this->hourRepository->getMonth($month);
     }
 
-    public function getForm(GetFormRequest $getFormRequest)
+    public function getForm(GetFormRequest $getFormRequest): void
     {
         $formRequest = [];
         $user_id = $getFormRequest->getUserId();
