@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
@@ -22,10 +23,10 @@ class HourController extends Controller
         $this->hourRepository = $hourRepo;
     }
 
-    public function index()
+    public function index() 
     {
         $hours = $this->hourService->getIndex();
-
+        dd($hours);
         return view('hours.index', compact('hours'));
     }
 
@@ -75,7 +76,7 @@ class HourController extends Controller
 
     public function edit(Hour $hour)
     {
-        return view('hours.edit')->with(['hour' => $hour]);
+        return view('hours.edit', compact('hour'));
     }
 
     public function update(HourRequest $request)
