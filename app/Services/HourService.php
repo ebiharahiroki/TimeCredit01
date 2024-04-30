@@ -4,14 +4,11 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Http\Requests\HourRequest;
 use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
 use App\Repositories\HourRepositoryInterface as HourRepository;
-use App\Services\GetFormRequest;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
 
 class HourService implements HourServiceInterface
 {
@@ -52,17 +49,17 @@ class HourService implements HourServiceInterface
         $other_cost = $getFormRequest->getOtherCost();
         $income = $getFormRequest->getIncome();
         $hourly_wage = $getFormRequest->getHourlyWage();
-        
+
         $total_cost = $getFormRequest->getRent() + $getFormRequest->getWaterCost()
                                 + $getFormRequest->getUtilityCost() + $getFormRequest->getFoodCost()
                              + $getFormRequest->getPhoneCost() + $getFormRequest->getOtherCost();
         $amount = ($getFormRequest->getIncome() - $total_cost) / $getFormRequest->getHourlyWage();
         $amount += ceil($amount);
-        $formRequest += array('user_id' => $user_id, 'year_id' => $year_id, 'month_id' => $month_id, 
-        'target_value' => $target_value, 'rent' => $rent, 'water_cost' => $water_cost, 
-        'utility_cost' => $utility_cost, 'food_cost' => $food_cost, 'phone_cost' => $phone_cost, 
-        'other_cost' => $other_cost, 'income' => $income, 'hourly_wage' => $hourly_wage, 'total_cost' => $total_cost, 
-        'amount' => $amount);
+        $formRequest += ['user_id' => $user_id, 'year_id' => $year_id, 'month_id' => $month_id,
+            'target_value' => $target_value, 'rent' => $rent, 'water_cost' => $water_cost,
+            'utility_cost' => $utility_cost, 'food_cost' => $food_cost, 'phone_cost' => $phone_cost,
+            'other_cost' => $other_cost, 'income' => $income, 'hourly_wage' => $hourly_wage, 'total_cost' => $total_cost,
+            'amount' => $amount];
         $hour = new Hour();
         $hour->create($formRequest);
     }
@@ -87,18 +84,18 @@ class HourService implements HourServiceInterface
         $other_cost = $getFormRequest->getOtherCost();
         $income = $getFormRequest->getIncome();
         $hourly_wage = $getFormRequest->getHourlyWage();
-        
+
         $total_cost = $getFormRequest->getRent() + $getFormRequest->getWaterCost()
                                 + $getFormRequest->getUtilityCost() + $getFormRequest->getFoodCost()
                              + $getFormRequest->getPhoneCost() + $getFormRequest->getOtherCost();
         $amount = ($getFormRequest->getIncome() - $total_cost) / $getFormRequest->getHourlyWage();
         $amount += ceil($amount);
-        $updateRequest += array('user_id' => $user_id, 'year_id' => $year_id, 'month_id' => $month_id,
-        'target_value' => $target_value, 'rent' => $rent, 'water_cost' => $water_cost, 
-        'utility_cost' => $utility_cost, 'food_cost' => $food_cost, 'phone_cost' => $phone_cost, 
-        'other_cost' => $other_cost, 'income' => $income, 'hourly_wage' => $hourly_wage, 'total_cost' => $total_cost, 
-        'amount' => $amount);
-        
+        $updateRequest += ['user_id' => $user_id, 'year_id' => $year_id, 'month_id' => $month_id,
+            'target_value' => $target_value, 'rent' => $rent, 'water_cost' => $water_cost,
+            'utility_cost' => $utility_cost, 'food_cost' => $food_cost, 'phone_cost' => $phone_cost,
+            'other_cost' => $other_cost, 'income' => $income, 'hourly_wage' => $hourly_wage, 'total_cost' => $total_cost,
+            'amount' => $amount];
+
         $hour->update($updateRequest);
     }
 

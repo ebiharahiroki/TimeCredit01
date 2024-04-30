@@ -1,9 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Http\Requests\HourRequest;
 use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;

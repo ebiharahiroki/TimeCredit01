@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
@@ -7,15 +8,16 @@ use App\Http\Requests\HourRequest;
 use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
-use Illuminate\View\View;
 use App\Repositories\HourRepositoryInterface as HourRepository;
-use App\Services\HourService;
 use App\Services\GetFormRequest;
+use App\Services\HourService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class HourController extends Controller
 {
     private $hourService;
+
     private $hourRepository;
 
     public function __construct(hourService $hourService, HourRepository $hourRepo)
@@ -27,6 +29,7 @@ class HourController extends Controller
     public function index(): View
     {
         $hours = $this->hourService->getIndex();
+
         return view('hours.index', compact('hours'));
     }
 
@@ -38,14 +41,14 @@ class HourController extends Controller
         return view('hours.create', compact('years'), compact('months'));
     }
 
-    public function store(HourRequest $request):RedirectResponse
+    public function store(HourRequest $request): RedirectResponse
     {
         $monthId = $this->hourRepository->getMonthId($request);
-        
+
         if ($monthId) {
             return redirect('/hours/create');
         }
-        
+
         $input = $request['hour'];
         $year_id = $input['year_id'];
         $month_id = $input['month_id'];
@@ -58,11 +61,11 @@ class HourController extends Controller
         $other_cost = $input['other_cost'];
         $income = $input['income'];
         $hourly_wage = $input['hourly_wage'];
-        
-        $getFormRequest = new GetFormRequest(auth()->id(), $year_id, $month_id, $target_value, 
-        $rent, $water_cost, $utility_cost, $food_cost, $phone_cost, $other_cost, $income, 
-        $hourly_wage);
-        
+
+        $getFormRequest = new GetFormRequest(auth()->id(), $year_id, $month_id, $target_value,
+            $rent, $water_cost, $utility_cost, $food_cost, $phone_cost, $other_cost, $income,
+            $hourly_wage);
+
         $this->hourService->getForm($getFormRequest);
 
         return redirect('/');
@@ -94,13 +97,13 @@ class HourController extends Controller
         $other_cost = $input['other_cost'];
         $income = $input['income'];
         $hourly_wage = $input['hourly_wage'];
-        
-        $getFormRequest = new GetFormRequest(auth()->id(), $year_id, $month_id, $target_value, 
-        $rent, $water_cost, $utility_cost, $food_cost, $phone_cost, $other_cost, $income, 
-        $hourly_wage);
-        
+
+        $getFormRequest = new GetFormRequest(auth()->id(), $year_id, $month_id, $target_value,
+            $rent, $water_cost, $utility_cost, $food_cost, $phone_cost, $other_cost, $income,
+            $hourly_wage);
+
         $this->hourService->getUpdateForm($getFormRequest, $hour);
-        
+
         return redirect('/hours/'.$hour->id);
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Repositories;
@@ -37,7 +38,7 @@ class HourRepository implements HourRepositoryInterface
 
     public function getShow(Hour $hour): Hour
     {
-         return $hour;
+        return $hour;
     }
 
     public function getChartMonth(): array
