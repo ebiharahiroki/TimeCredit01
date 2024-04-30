@@ -80,14 +80,21 @@
                     @method('PUT')
                     <div class="mx-auto max-w-lg ">
                         <div class="Year">
-                            <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md">{{ $hour->year->year }}</span>
+                            <input class="text-md block px-3 py-2 rounded-lg w-full bg-white 
+                            border-2 border-gray-300 shadow-md" name="hour[year_id]" 
+                            value="{{ $hour->year_id }}">{{ $hour->year->year }}</span>
                         </div>
                         <div class="Month py-2">
-                            <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md">{{ $hour->month->month }}</span>
+                            <input class="text-md block px-3 py-2 rounded-lg w-full bg-white 
+                            border-2 border-gray-300 shadow-md" name="hour[month_id]" 
+                            value="{{ $hour->month_id }}">{{ $hour->month->month }}</span>
                         </div>
                     <div class="target_value py-1">
                         <span class="px-1 font-sans font-bold text-gray-600">欲しい自由時間</span>
-                        <input placeholder="欲しい自由時間" type="text" name="hour[target_value]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md y-600 focus:border-gray-600" value="{{ $hour->target_value }}"/>
+                        <input placeholder="欲しい自由時間" type="text" name="hour[target_value]" 
+                        class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 
+                        border-gray-300 shadow-md y-600 focus:border-gray-600" 
+                        value="{{ $hour->target_value }}"/>
                         <p class="target_value" style="color:red">
                             {{ $errors->first('hour.target_value') }}
                         </p>

@@ -20,7 +20,7 @@ interface HourServiceInterface
 
     public function deliverShow(Hour $hour);
 
-    public function updateForm(updateFormRequest $updateFormRequest);
+    public function getUpdateForm(GetFormRequest $getFormRequest, Hour $hour);
 
     public function deliverData();
 }

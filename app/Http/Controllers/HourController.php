@@ -7,10 +7,11 @@ use App\Http\Requests\HourRequest;
 use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
+use Illuminate\View\View;
 use App\Repositories\HourRepositoryInterface as HourRepository;
 use App\Services\HourService;
 use App\Services\GetFormRequest;
-use App\Services\UpdateFormRequest;
+use Illuminate\Http\RedirectResponse;
 
 class HourController extends Controller
 {
@@ -23,14 +24,13 @@ class HourController extends Controller
         $this->hourRepository = $hourRepo;
     }
 
-    public function index() 
+    public function index(): View
     {
         $hours = $this->hourService->getIndex();
-        dd($hours);
         return view('hours.index', compact('hours'));
     }
 
-    public function create(Year $year, Month $month)
+    public function create(Year $year, Month $month): View
     {
         $years = $this->hourService->deliverYear($year);
         $months = $this->hourService->deliverMonth($month);
@@ -38,7 +38,7 @@ class HourController extends Controller
         return view('hours.create', compact('years'), compact('months'));
     }
 
-    public function store(HourRequest $request)
+    public function store(HourRequest $request):RedirectResponse
     {
         $monthId = $this->hourRepository->getMonthId($request);
         
@@ -59,29 +59,29 @@ class HourController extends Controller
         $income = $input['income'];
         $hourly_wage = $input['hourly_wage'];
         
-        $getFormRequest = new GetFormRequest(auth()->id(), $year_id, $month_id, $target_value, $rent, $water_cost, 
-        $utility_cost, $food_cost, $phone_cost, $other_cost, $income, $hourly_wage);
+        $getFormRequest = new GetFormRequest(auth()->id(), $year_id, $month_id, $target_value, 
+        $rent, $water_cost, $utility_cost, $food_cost, $phone_cost, $other_cost, $income, 
+        $hourly_wage);
         
         $this->hourService->getForm($getFormRequest);
 
         return redirect('/');
     }
 
-    public function show(Hour $hour)
+    public function show(Hour $hour): View
     {
         $hour = $this->hourService->deliverShow($hour);
 
         return view('hours.show', compact('hour'));
     }
 
-    public function edit(Hour $hour)
+    public function edit(Hour $hour): View
     {
         return view('hours.edit', compact('hour'));
     }
 
-    public function update(HourRequest $request)
+    public function update(HourRequest $request, Hour $hour): RedirectResponse
     {
-        dd($request);
         $input = $request['hour'];
         $year_id = $input['year_id'];
         $month_id = $input['month_id'];
@@ -95,15 +95,16 @@ class HourController extends Controller
         $income = $input['income'];
         $hourly_wage = $input['hourly_wage'];
         
-        $updateFormRequest = new UpdateFormRequest(auth()->id(), $target_value, $rent, $water_cost, 
-        $utility_cost, $food_cost, $phone_cost, $other_cost, $income, $hourly_wage);
+        $getFormRequest = new GetFormRequest(auth()->id(), $year_id, $month_id, $target_value, 
+        $rent, $water_cost, $utility_cost, $food_cost, $phone_cost, $other_cost, $income, 
+        $hourly_wage);
         
-        $this->hourService->updateForm($updateFormRequest);
-
+        $this->hourService->getUpdateForm($getFormRequest, $hour);
+        
         return redirect('/hours/'.$hour->id);
     }
 
-    public function delete(Hour $hour)
+    public function delete(Hour $hour): RedirectResponse
     {
         $hour->delete();
 
