@@ -80,84 +80,91 @@
                     @method('PUT')
                     <div class="mx-auto max-w-lg ">
                         <div class="Year">
-                            <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md">{{ $hour->year->year }}</span>
+                            <input class="text-md block px-3 py-2 rounded-lg w-full bg-white 
+                            border-2 border-gray-300 shadow-md" name="hour[year_id]" 
+                            value="{{ $hour->year_id }}">{{ $hour->year->year }}</span>
                         </div>
                         <div class="Month py-2">
-                            <span class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md">{{ $hour->month->month }}</span>
+                            <input class="text-md block px-3 py-2 rounded-lg w-full bg-white 
+                            border-2 border-gray-300 shadow-md" name="hour[month_id]" 
+                            value="{{ $hour->month_id }}">{{ $hour->month->month }}</span>
                         </div>
-                        <div class="target_value py-1">
-                            <span class="px-1 font-sans font-bold text-gray-600">欲しい自由時間</span>
-                            <input placeholder="欲しい自由時間" type="text" name="hour[target_value]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md y-600 focus:border-gray-600" value="{{ $hour->target_value }}"/>
-                            <p class="target_value" style="color:red">
-                                {{ $errors->first('hour.target_value') }}
-                            </p>
-                        </div>
-                        
-                        <div class="py-1">
-                            <span class="px-1 font-sans font-bold text-gray-600">家賃</span>
-                            <input placeholder="家賃" type="text" x-model="rent" name="hour[rent]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->rent }}"/>
-                            <p class="rent__error" style="color:red">
-                                {{ $errors->first('hour.rent') }}
-                            </p>
-                        </div>
-                        
-                        <div class="py-1">
-                            <span class="px-1 font-sans font-bold text-gray-600">水道代</span>
-                            <input placeholder="水道代" type="text" x-model="water_cost" name="hour[water_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->water_cost }}"/>
-                            <p class="water_cost__error" style="color:red">
-                                {{ $errors->first('hour.water_cost') }}
-                            </p>
-                        </div>
-                        
-                        <div class="py-1">
-                            <span class="px-1 font-sans font-bold text-gray-600">光熱費</span>
-                            <input placeholder="光熱費" type="text" x-model="utility_cost" name="hour[utility_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->utility_cost }}"/>
-                            <p class="utility_cost__error" style="color:red">
-                                {{ $errors->first('hour.utility_cost') }}
-                            </p>
-                        </div>
-                        
-                        <div class="py-1">
-                            <span class="px-1 font-sans font-bold text-gray-600">食費</span>
-                            <input placeholder="食費" type="text" x-model="food_cost" name="hour[food_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->food_cost }}"/>
-                            <p class="food_cost__error" style="color:red">
-                                {{ $errors->first('hour.food_cost') }}
-                            </p>
-                        </div>
-                        
-                        <div class="py-1">
-                            <span class="px-1 font-sans font-bold text-gray-600">通信費</span>
-                            <input placeholder="通信費" type="text" x-model="phone_cost" name="hour[phone_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->phone_cost }}"/>
-                            <p class="phone_cost__error" style="color:red">
-                                {{ $errors->first('hour.phone_cost') }}
-                            </p>
-                        </div>
-                        
-                        <div class="py-1">
-                            <span class="px-1 font-sans font-bold text-gray-600">その他</span>
-                            <input placeholder="その他" type="text" x-model="other_cost" name="hour[other_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->other_cost }}"/>
-                            <p class="other_cost__error" style="color:red">
-                                {{ $errors->first('hour.other_cost') }}
-                            </p>
-                        </div>
-                        
-                        <div class="py-1">
-                            <span class="px-1 font-sans font-bold text-gray-600">収入</span>
-                            <input placeholder="収入" type="text" x-model="income" name="hour[income]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->income }}"/>
-                            <p class="income__error" style="color:red">
-                                {{ $errors->first('hour.income') }}
-                            </p>
-                        </div>
-                        
-                        <div class="py-1">
-                            <span class="px-1 font-sans font-bold text-gray-600">時給</span>
-                            <input placeholder="時給" type="text" x-model="hourly_wage" name="hour[hourly_wage]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->hourly_wage }}"/>
-                        </div>
-                        <input type="submit" value="更新" class="mt-3 text-lg font-semibold bg-gray-800 w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:text-white hover:bg-black cursor-pointer"/>
-                        <p class="hourly_wage__error" style="color:red">
-                                {{ $errors->first('hour.hourly_wage') }}
+                    <div class="target_value py-1">
+                        <span class="px-1 font-sans font-bold text-gray-600">欲しい自由時間</span>
+                        <input placeholder="欲しい自由時間" type="text" name="hour[target_value]" 
+                        class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 
+                        border-gray-300 shadow-md y-600 focus:border-gray-600" 
+                        value="{{ $hour->target_value }}"/>
+                        <p class="target_value" style="color:red">
+                            {{ $errors->first('hour.target_value') }}
                         </p>
                     </div>
+                    
+                    <div class="py-1">
+                        <span class="px-1 font-sans font-bold text-gray-600">家賃</span>
+                        <input placeholder="家賃" type="text" x-model="rent" name="hour[rent]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->rent }}"/>
+                        <p class="rent__error" style="color:red">
+                            {{ $errors->first('hour.rent') }}
+                        </p>
+                    </div>
+                    
+                    <div class="py-1">
+                        <span class="px-1 font-sans font-bold text-gray-600">水道代</span>
+                        <input placeholder="水道代" type="text" x-model="water_cost" name="hour[water_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->water_cost }}"/>
+                        <p class="water_cost__error" style="color:red">
+                            {{ $errors->first('hour.water_cost') }}
+                        </p>
+                    </div>
+                    
+                    <div class="py-1">
+                        <span class="px-1 font-sans font-bold text-gray-600">光熱費</span>
+                        <input placeholder="光熱費" type="text" x-model="utility_cost" name="hour[utility_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->utility_cost }}"/>
+                        <p class="utility_cost__error" style="color:red">
+                            {{ $errors->first('hour.utility_cost') }}
+                        </p>
+                    </div>
+                    
+                    <div class="py-1">
+                        <span class="px-1 font-sans font-bold text-gray-600">食費</span>
+                        <input placeholder="食費" type="text" x-model="food_cost" name="hour[food_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->food_cost }}"/>
+                        <p class="food_cost__error" style="color:red">
+                            {{ $errors->first('hour.food_cost') }}
+                        </p>
+                    </div>
+                    
+                    <div class="py-1">
+                        <span class="px-1 font-sans font-bold text-gray-600">通信費</span>
+                        <input placeholder="通信費" type="text" x-model="phone_cost" name="hour[phone_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->phone_cost }}"/>
+                        <p class="phone_cost__error" style="color:red">
+                            {{ $errors->first('hour.phone_cost') }}
+                        </p>
+                    </div>
+                    
+                    <div class="py-1">
+                        <span class="px-1 font-sans font-bold text-gray-600">その他</span>
+                        <input placeholder="その他" type="text" x-model="other_cost" name="hour[other_cost]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->other_cost }}"/>
+                        <p class="other_cost__error" style="color:red">
+                            {{ $errors->first('hour.other_cost') }}
+                        </p>
+                    </div>
+                    
+                    <div class="py-1">
+                        <span class="px-1 font-sans font-bold text-gray-600">収入</span>
+                        <input placeholder="収入" type="text" x-model="income" name="hour[income]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->income }}"/>
+                        <p class="income__error" style="color:red">
+                            {{ $errors->first('hour.income') }}
+                        </p>
+                    </div>
+                    
+                    <div class="py-1">
+                        <span class="px-1 font-sans font-bold text-gray-600">時給</span>
+                        <input placeholder="時給" type="text" x-model="hourly_wage" name="hour[hourly_wage]" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 shadow-md focus:border-gray-600" value="{{ $hour->hourly_wage }}"/>
+                    </div>
+                    <input type="submit" value="更新" class="mt-3 text-lg font-semibold bg-gray-800 w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:text-white hover:bg-black cursor-pointer"/>
+                    <p class="hourly_wage__error" style="color:red">
+                            {{ $errors->first('hour.hourly_wage') }}
+                    </p>
+                </div>
                 </form>
                 <div class="footer">
                     <a href="/" class="flex items-center justify-center mt-3 text-lg font-semibold bg-gray-800 w-full text-white rounded-lg px-1 py-3 block shadow-xl hover:text-white hover:bg-black">戻る</a>

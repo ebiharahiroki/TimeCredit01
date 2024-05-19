@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
-use App\Http\Requests\HourRequest;
 use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
@@ -19,7 +20,7 @@ interface HourServiceInterface
 
     public function deliverShow(Hour $hour);
 
-    public function updateForm(HourRequest $request, Hour $hour);
+    public function getUpdateForm(GetFormRequest $getFormRequest, Hour $hour);
 
     public function deliverData();
 }

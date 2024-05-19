@@ -1,16 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Services;
 
-class GetFormRequest
+class UpdateFormRequest
 {
     private $user_id;
-
-    private $year_id;
-
-    private $month_id;
 
     private $target_value;
 
@@ -30,12 +24,10 @@ class GetFormRequest
 
     private $hourly_wage;
 
-    public function __construct($user_id, $year_id, $month_id, $target_value, $rent, $water_cost, $utility_cost,
+    public function __construct($user_id, $target_value, $rent, $water_cost, $utility_cost,
     $food_cost, $phone_cost, $other_cost, $income, $hourly_wage)
     {
         $this->user_id = $user_id;
-        $this->year_id = $year_id;
-        $this->month_id = $month_id;
         $this->target_value = $target_value;
         $this->rent = $rent;
         $this->water_cost = $water_cost;
@@ -50,16 +42,6 @@ class GetFormRequest
     public function getUserId()
     {
         return $this->user_id;
-    }
-
-    public function getYearId()
-    {
-        return $this->year_id;
-    }
-
-    public function getMonthId()
-    {
-        return $this->month_id;
     }
 
     public function getTargetValue()

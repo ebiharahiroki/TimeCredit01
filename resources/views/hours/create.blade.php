@@ -105,7 +105,8 @@
                         <div class="py-1">
                             <input placeholder="家賃" type="text" name="hour[rent]"
                             class="text-md px-3 py-2 rounded-lg w-full bg-white border-2
-                            border-gray-300 placeholder-gray-600 shadow-md focus:border-gray-600" value="{{ old('hour.rent') }}"/>
+                            border-gray-300 placeholder-gray-600 shadow-md focus:border-gray-600" 
+                            value="{{ old('hour.rent') }}"/>
                             <p class="rent__error" style="color:red">
                                 {{ $errors->first('hour.rent') }}
                             </p>
