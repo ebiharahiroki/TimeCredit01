@@ -13,6 +13,7 @@ use App\Services\GetFormRequest;
 use App\Services\HourService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Route;
 
 class HourController extends Controller
 {
@@ -29,7 +30,7 @@ class HourController extends Controller
     public function index(): View
     {
         $hours = $this->hourService->getIndex();
-
+        
         return view('hours.index', compact('hours'));
     }
 
