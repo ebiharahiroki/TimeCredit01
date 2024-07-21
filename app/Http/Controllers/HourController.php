@@ -8,12 +8,12 @@ use App\Http\Requests\HourRequest;
 use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
-use App\Repositories\HourRepositoryInterface as HourRepository;
-use App\Services\GetFormRequest;
+use App\Repositories\HourRepositoryInterface;
 use App\Services\HourService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Route;
+use App\Services\GetFormRequest;
 
 class HourController extends Controller
 {
@@ -21,7 +21,7 @@ class HourController extends Controller
 
     private $hourRepository;
 
-    public function __construct(hourService $hourService, HourRepository $hourRepo)
+    public function __construct(hourService $hourService, HourRepositoryInterface $hourRepo)
     {
         $this->hourService = $hourService;
         $this->hourRepository = $hourRepo;
@@ -44,31 +44,8 @@ class HourController extends Controller
 
     public function store(HourRequest $request): RedirectResponse
     {
-        $monthId = $this->hourRepository->getMonthId($request);
-
-        if ($monthId) {
-            return redirect('/hours/create');
-        }
-
-        $input = $request['hour'];
-        $year_id = $input['year_id'];
-        $month_id = $input['month_id'];
-        $target_value = $input['target_value'];
-        $rent = $input['rent'];
-        $water_cost = $input['water_cost'];
-        $utility_cost = $input['utility_cost'];
-        $food_cost = $input['food_cost'];
-        $phone_cost = $input['phone_cost'];
-        $other_cost = $input['other_cost'];
-        $income = $input['income'];
-        $hourly_wage = $input['hourly_wage'];
-
-        $getFormRequest = new GetFormRequest(auth()->id(), $year_id, $month_id, $target_value,
-            $rent, $water_cost, $utility_cost, $food_cost, $phone_cost, $other_cost, $income,
-            $hourly_wage);
-
-        $this->hourService->getForm($getFormRequest);
-
+        $this->hourService->getForm($request);
+        
         return redirect('/');
     }
 

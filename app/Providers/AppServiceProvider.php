@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\HourRepositoryInterface;
+use App\Repositories\HourRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,8 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('App\Services\HourServiceInterface', 'App\Services\Hourservice');
-        $this->app->bind('App\Repositories\HourRepositoryInterface', 'App\Repositories\HourRepository');
+        $this->app->bind(HourRepositoryInterface::class, HourRepository::class);
     }
 
     /**
