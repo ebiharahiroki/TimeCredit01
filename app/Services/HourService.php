@@ -5,16 +5,18 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\Hour;
+use App\Http\Requests\HourRequest;
 use App\Models\Month;
 use App\Models\Year;
-use App\Repositories\HourRepositoryInterface as HourRepository;
+use App\Repositories\HourRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use App\Services\GetFormRequest;
 
-class HourService implements HourServiceInterface
+class HourService
 {
     private $hourRepository;
 
-    public function __construct(HourRepository $hourRepository)
+    public function __construct(HourRepositoryInterface $hourRepository)
     {
         $this->hourRepository = $hourRepository;
     }
@@ -34,34 +36,17 @@ class HourService implements HourServiceInterface
         return $this->hourRepository->getMonth($month);
     }
 
-    public function getForm(GetFormRequest $getFormRequest): void
+    public function getForm(HourRequest $request)
     {
-        $formRequest = [];
-        $user_id = $getFormRequest->getUserId();
-        $year_id = $getFormRequest->getYearId();
-        $month_id = $getFormRequest->getMonthId();
-        $target_value = $getFormRequest->getTargetValue();
-        $rent = $getFormRequest->getRent();
-        $water_cost = $getFormRequest->getWaterCost();
-        $utility_cost = $getFormRequest->getUtilityCost();
-        $food_cost = $getFormRequest->getFoodCost();
-        $phone_cost = $getFormRequest->getPhoneCost();
-        $other_cost = $getFormRequest->getOtherCost();
-        $income = $getFormRequest->getIncome();
-        $hourly_wage = $getFormRequest->getHourlyWage();
-
-        $total_cost = $getFormRequest->getRent() + $getFormRequest->getWaterCost()
-                                + $getFormRequest->getUtilityCost() + $getFormRequest->getFoodCost()
-                             + $getFormRequest->getPhoneCost() + $getFormRequest->getOtherCost();
-        $amount = ($getFormRequest->getIncome() - $total_cost) / $getFormRequest->getHourlyWage();
-        $amount += ceil($amount);
-        $formRequest += ['user_id' => $user_id, 'year_id' => $year_id, 'month_id' => $month_id,
-            'target_value' => $target_value, 'rent' => $rent, 'water_cost' => $water_cost,
-            'utility_cost' => $utility_cost, 'food_cost' => $food_cost, 'phone_cost' => $phone_cost,
-            'other_cost' => $other_cost, 'income' => $income, 'hourly_wage' => $hourly_wage, 'total_cost' => $total_cost,
-            'amount' => $amount];
-        $hour = new Hour();
-        $hour->create($formRequest);
+        $monthId = $this->hourRepository->getMonthId($request);
+        
+        if ($monthId) {
+            return redirect('/hours/create');
+        }
+        
+        $getFormRequest = $this->hourRepository->createGetFormRequestInstance($request);
+        
+        $this->hourRepository->store($getFormRequest);
     }
 
     public function deliverShow(Hour $hour): Hour

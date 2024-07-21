@@ -7,30 +7,20 @@ namespace App\Services;
 class GetFormRequest
 {
     private $user_id;
-
     private $year_id;
-
     private $month_id;
-
     private $target_value;
-
     private $rent;
-
     private $water_cost;
-
     private $utility_cost;
-
     private $food_cost;
-
     private $phone_cost;
-
     private $other_cost;
-
     private $income;
-
     private $hourly_wage;
 
-    public function __construct($user_id, $year_id, $month_id, $target_value, $rent, $water_cost, $utility_cost,
+    public function __construct($user_id, $year_id, $month_id, 
+    $target_value, $rent, $water_cost, $utility_cost, 
     $food_cost, $phone_cost, $other_cost, $income, $hourly_wage)
     {
         $this->user_id = $user_id;

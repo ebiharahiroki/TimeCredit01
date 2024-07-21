@@ -7,6 +7,8 @@ namespace App\Services;
 use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
+use App\Http\Requests\HourRequest;
+use App\Services\GetFormRequest;
 
 interface HourServiceInterface
 {
@@ -16,7 +18,7 @@ interface HourServiceInterface
 
     public function deliverMonth(Month $month);
 
-    public function getForm(GetFormRequest $getFormRequest);
+    public function getForm(HourRequest $request);
 
     public function deliverShow(Hour $hour);
 

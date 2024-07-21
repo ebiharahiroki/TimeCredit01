@@ -8,6 +8,7 @@ use App\Http\Requests\HourRequest;
 use App\Models\Hour;
 use App\Models\Month;
 use App\Models\Year;
+use App\Services\GetFormRequest;
 
 interface HourRepositoryInterface
 {
@@ -18,6 +19,10 @@ interface HourRepositoryInterface
     public function getMonth(Month $month);
 
     public function getMonthId(HourRequest $request);
+    
+    public function createGetFormRequestInstance(HourRequest $request);
+    
+    public function store(GetFormRequest $getFormRequest): void;
 
     public function getShow(Hour $hour);
 
